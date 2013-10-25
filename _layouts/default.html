@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>John Duff - {{ page.title }} </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="verify-v1" content="fI45uNHehVNiO9Dt0Fp7XnsV0Z/ozBTkPoS6RlYAe50=" />
+  <meta name="y_key" content="6c948e75a617b12d" />
+  <meta name='technorati-claim' content='8QN7CWNH8BSJ' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" media="screen" href="/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="John Duff's blog" />
+</head>
+
+<body class='{{ page.page_name }}'>
+  <div class="container">
+    <div class="row">
+      <div class="span4 sidebar affix">
+        <div class="well">
+          <h2 class='site-title'>
+            <a href="{{ site.production_url }}">JOHN DUFF</a>
+          </h2>
+
+          <p>A blog about writing software and things.</p>
+
+          <ul id="navigation" class="clearfix">
+            <li class='about'><a href='/about/'>About</a></li>
+            <li class='archives'><a href='/archives/'>Archives</a></li>
+            <li class="github"><a href="http://github.com/jduff" rel='me' class='url'>@github</a></li>
+            <li class="twitter"><a href="http://twitter.com/johnduff" rel="me" class="url">@johnduff</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="span8 main offset4">
+        <div class="well">
+          {{ content }}
+        </div>
+      </div>
+
+      <div id="bottom" class="span8 offset4">
+        <div class="well">
+          <a href="/about/">About</a> |
+          <a href="/archives/">Archives</a> |
+          <a href="/atom.xml">feed</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+
+  <!-- Google Analytics Code -->
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9947336-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
+          'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+</body>
+</html>
+
