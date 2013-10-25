@@ -1,5 +1,7 @@
 permalink: pretty
+markdown: rdiscount
+pygments:true
 paginate: 10
 exclude: ['Rakefile', 'Gemfile', 'Gemfile.lock', 'config.rb', 'run']
 
-production_url: http://jduff.github.com
+production_url: http://lanffy.github.com
