@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "Values, or quirks, of John Duff"
-tags: [jduff, values, management, quirks]
-author_name: John Duff
-author_uri: http://twitter.com/johnduff
+title: "怎样拍出好看的照片"
+tags: [意境, 感觉, 光线, 瞬间]
+author_name: R_Lanffy
+author_uri: http://weibo.com/206661350
 ---
 
-p=. !/images/posts/2013-10-06/values.jpg(Values)!
+p=. !/images/posts/2013-10-28/first.jpg(小时候)!
+
+	想要拍出好看的照片，第一也是最重要的，你的要有个相机吧。至少得是个微单吧，普通的数码相机也不行。当然有单反就更好了。
 
 A few months ago I was introduced to this blog post by "Luc Levesque":http://luclevesque.com/ titled "How to help new employees be rockstars, a new approach":http://luclevesque.com/post/15881999207/how-to-help-new-employees-be-rockstars-a-new-approach. In this post Luc talks about his "Blueprint to Luc and his Quirks" which outlines the things that are important to him and some of his particular quirks. Luc then gives this to his new employees and goes over it with them when they start so that they understand a bit more about him and how he works. The idea is that if there are no surprises, all the expectations and potential quirks are put out there straight away, then there will be less questions about how someone new should react or how Luc will react to particular actions.
 
