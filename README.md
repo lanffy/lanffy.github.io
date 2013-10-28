@@ -1,6 +1,6 @@
 #Lanffy 的博客说明
 
-这是我的个人博客，你可以点击[lanffy.github.io](https://github.com/lanffy/lanffy.github,io)来查看博客的源码。
+这是我的个人博客，你可以点击[lanffy.github.io](https://github.com/lanffy/lanffy.github.io)来查看博客的源码。
 
 * 感谢认可
 * 喜欢说做就做的同学们
