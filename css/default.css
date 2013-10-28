@@ -3,11 +3,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 /*@import "compass/reset";*/
 
-a.title {
+#title {
 	color: blue;
 }
 
-a.comment {
+#comment {
 	color: #f60;
 }
 
