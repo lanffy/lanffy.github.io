@@ -4,6 +4,7 @@
 /*@import "compass/reset";*/
 
 a.title {
+	color: blue;
 }
 
 a.comment {
