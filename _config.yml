@@ -1,6 +1,6 @@
 permalink: pretty
-markdown: rdiscount
-pygments: false
+markdown: kramdown
+highlighter: pygments
 paginate: 10
 exclude: ['Rakefile', 'Gemfile', 'Gemfile.lock', 'config.rb', 'run']
 
