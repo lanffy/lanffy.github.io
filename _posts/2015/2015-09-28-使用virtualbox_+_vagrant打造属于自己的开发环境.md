@@ -7,11 +7,15 @@ author_name: R_Lanffy
 
 ![vagrant](http://sfault-image.b0.upaiyun.com/c1/eb/c1eb8c927b0b255d6de2532ae2564877)
 
-很多新进入公司的小伙伴估计都有这样的经历，刚进公司必定会配置公司产品运行所需的开发环境。配置环境对于刚入职场的新手来说，还是很有难度的。
+很多新进入公司的小伙伴估计都有这样的经历，刚进公司必定会配置公司产品运行所需的开发环境。
+配置环境对于刚入职场的新手来说，还是很有难度的。
 
-Vagrant就是为了解决这个问题而存在的，通过Vagrant可以打造专有的开发环境。通过Vagrant配置好开发环境后，就可以打包开发环境进行分发了。新手只需拿到Vagrant包，运行几个脚本就完成了环境的配置。
+Vagrant就是为了解决这个问题而存在的，通过Vagrant可以打造专有的开发环境。
+通过Vagrant配置好开发环境后，就可以打包开发环境进行分发了。
+新手只需拿到Vagrant包，运行几个脚本就完成了环境的配置。
 
-而且这一切都是在虚拟机中完成的，所以也不用担心配置失败而带来的从装系统的风险，我曾经就因为数据库安装失败而重装系统过。我想肯定不止我一个人有这样的经历。
+而且这一切都是在虚拟机中完成的，所以也不用担心配置失败而带来的从装系统的风险.
+我曾经就因为数据库安装失败而重装系统过。我想肯定不止我一个人有这样的经历。
 
 ##配置步骤
 
@@ -36,6 +40,7 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
 安装完成后，在想要搭建环境的目录下执行命令```vagrant init```
 
 在当前目录下会生成一个Vagrantfile配置文件，内容如下：
+
 
 ```
 # -*- mode: ruby -*-
@@ -110,6 +115,7 @@ Vagrant.configure(2) do |config|
   # SHELL
 end
 ```
+
 修改配置参数：
 **config.vm.box = "base"** 修改为**config.vm.box = "hashicorp/precise32"**
 
@@ -161,9 +167,12 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
 
 至此，vagrant虚拟环境就启动起来了。在当面目录执行```vagrant ssh```就能登陆到虚拟系统中。
 
-在虚拟系统的```/projects```中路中执行```touch testfile```。创建一个测试文件，然后进入到你自己的系统，Vagrantfile所在的目录，进入到projects目录中，你会发现存在一个testfile文件。
+在虚拟系统的```/projects```中路中执行```touch testfile```。
+创建一个测试文件，然后进入到你自己的系统，Vagrantfile所在的目录.
+进入到projects目录中，你会发现存在一个testfile文件。
 
-我想你已经明白了vagrant的精髓之处，你可以在自己的系统中编辑代码，而在vagrant的虚拟系统中去运行代码，也就是说，你不用在自己的系统中安装运行环境！
+我想你已经明白了vagrant的精髓之处，你可以在自己的系统中编辑代码.
+而在vagrant的虚拟系统中去运行代码，也就是说，你不用在自己的系统中安装运行环境！
 
 ***Windows 用户注意：Windows 终端并不支持 ssh，所以需要安装第三方 SSH 客户端，比如：Putty、Xshell 等。***
 
@@ -183,5 +192,6 @@ $ vagrant destroy  # 销毁当前虚拟机
 
 至此，一个简单的，垮平台的vagrant开发环境就配置好了。但虚拟机中却什么都没有安装，比如php，mysql，apache等。
 
-在后面的文章中，我会准备一些shell脚本，使得在第一次启动虚拟机时，安装好常用的或者是你所需要的所有软件。当然，你也可以参考官方文档自己动手。
+在后面的文章中，我会准备一些shell脚本，使得在第一次启动虚拟机时，安装好常用的或者是你所需要的所有软件。
+当然，你也可以参考官方文档自己动手。
 
