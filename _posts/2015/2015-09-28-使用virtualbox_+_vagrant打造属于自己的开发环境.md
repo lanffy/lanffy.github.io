@@ -183,7 +183,7 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
 ***Windows 用户注意：Windows 终端并不支持 ssh，所以需要安装第三方 SSH 客户端，比如：Putty、Xshell 等。***
 
 ###常用命令
-```
+
     vagrant init  # 初始化
     
     vagrant up  # 启动虚拟机
@@ -197,7 +197,8 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
     vagrant status  # 查看虚拟机运行状态
     
     vagrant destroy  # 销毁当前虚拟机
-```
+
+
 
 更多内容请查阅官方文档 [http://docs.vagrantup.com/v2/cli/index.html](http://docs.vagrantup.com/v2/cli/index.html)
 
