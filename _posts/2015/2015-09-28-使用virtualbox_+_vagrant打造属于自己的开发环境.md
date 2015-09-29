@@ -184,13 +184,19 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
 
 ###常用命令
 ```
-$ vagrant init  # 初始化
-$ vagrant up  # 启动虚拟机
-$ vagrant halt  # 关闭虚拟机
-$ vagrant reload  # 重启虚拟机
-$ vagrant ssh  # SSH 至虚拟机
-$ vagrant status  # 查看虚拟机运行状态
-$ vagrant destroy  # 销毁当前虚拟机
+vagrant init  # 初始化
+
+vagrant up  # 启动虚拟机
+
+vagrant halt  # 关闭虚拟机
+
+vagrant reload  # 重启虚拟机
+
+vagrant ssh  # SSH 至虚拟机
+
+vagrant status  # 查看虚拟机运行状态
+
+vagrant destroy  # 销毁当前虚拟机
 ```
 
 更多内容请查阅官方文档 [http://docs.vagrantup.com/v2/cli/index.html](http://docs.vagrantup.com/v2/cli/index.html)
