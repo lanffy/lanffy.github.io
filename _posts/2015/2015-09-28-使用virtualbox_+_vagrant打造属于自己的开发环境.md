@@ -45,10 +45,8 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
 
 在当前目录下会生成一个Vagrantfile配置文件，内容如下：
 
-
-```
     
-        # -*- mode: ruby -*-
+    # -*- mode: ruby -*-
     # vi: set ft=ruby :
     
     # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -119,7 +117,6 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
     #   sudo apt-get install -y apache2
     # SHELL
   end
-```
 
 修改配置参数：
 **config.vm.box = "base"** 修改为**config.vm.box = "hashicorp/precise32"**
