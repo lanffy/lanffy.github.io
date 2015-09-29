@@ -8,13 +8,17 @@ author_name: R_Lanffy
 ![vagrant](http://sfault-image.b0.upaiyun.com/c1/eb/c1eb8c927b0b255d6de2532ae2564877)
 
 很多新进入公司的小伙伴估计都有这样的经历，刚进公司必定会配置公司产品运行所需的开发环境。
+
 配置环境对于刚入职场的新手来说，还是很有难度的。
 
 Vagrant就是为了解决这个问题而存在的，通过Vagrant可以打造专有的开发环境。
+
 通过Vagrant配置好开发环境后，就可以打包开发环境进行分发了。
+
 新手只需拿到Vagrant包，运行几个脚本就完成了环境的配置。
 
 而且这一切都是在虚拟机中完成的，所以也不用担心配置失败而带来的从装系统的风险.
+
 我曾经就因为数据库安装失败而重装系统过。我想肯定不止我一个人有这样的经历。
 
 ##配置步骤
@@ -43,7 +47,8 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
 
 
 ```
-    # -*- mode: ruby -*-
+    
+        # -*- mode: ruby -*-
     # vi: set ft=ruby :
     
     # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -120,6 +125,7 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
 **config.vm.box = "base"** 修改为**config.vm.box = "hashicorp/precise32"**
 
     该参数的含义是虚拟机使用什么样的镜像，默认是base，我们将它修改为Ubuntu precise 32 VirtualBox
+    
 打开配置：
 **# config.vm.synced_folder "../data", "/vagrant_data"** 
 
