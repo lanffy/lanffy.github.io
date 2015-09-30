@@ -183,9 +183,9 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
 
     vagrant init  # 初始化
     vagrant up  # 启动虚拟机
-    vagrant halt  # 关闭虚拟机
+    vagrant halt  # 挂起虚拟机
     vagrant reload  # 重启虚拟机
-    vagrant ssh  # SSH 至虚拟机
+    vagrant ssh  # SSH 登录至虚拟机
     vagrant status  # 查看虚拟机运行状态
     vagrant destroy  # 销毁当前虚拟机
 
