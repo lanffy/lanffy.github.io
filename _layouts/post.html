@@ -4,8 +4,7 @@ page_name: blog
 ---
 <div class="post">
     <h1>{{page.title}}</h1>
-    <small class="meta">Posted at >  {{ page.date | date:"%B %d, %Y" }}</small>
-    <hr />
+    <small class="meta">Posted {{ page.date | date:"%B %d, %Y" }}</small>
     {{ content }}
 </div>
 
