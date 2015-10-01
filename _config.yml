@@ -1,7 +1,17 @@
 permalink: pretty
-markdown: kramdown
+#markdown: kramdown
+#markdown: maruku
+#markdown_ext: markdown,mkd,mkdn,md
 highlighter: pygments
 paginate: 10
 exclude: ['Rakefile', 'Gemfile', 'Gemfile.lock', 'config.rb', 'run']
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  use_coderay: false
 
 production_url: http://lanffy.github.com
