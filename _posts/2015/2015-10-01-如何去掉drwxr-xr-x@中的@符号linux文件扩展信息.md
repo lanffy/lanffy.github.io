@@ -1,15 +1,8 @@
 ---
 layout: post
-
 title: "如何去掉drwxr-xr-x@中的@符号Linux文件扩展信息"
-
 tags: [Linux, 扩展信息]
-
 author_name: R_Lanffy
-
----
-
-#如何去掉drwxr-xr-x@中的@符号Linux文件扩展信息
 ---
 
 最近从朋友那里拷贝了文件，执行了下```ls -lart```
