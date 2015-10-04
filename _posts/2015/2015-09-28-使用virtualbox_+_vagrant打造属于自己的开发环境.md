@@ -1,6 +1,6 @@
 ---
 layout: post
-title: " 使用VirtualBox + Vagrant打造属于自己的开发环境"
+title: " 使用VirtualBox + Vagrant打造属于自己的开发环境1"
 tags: [VirtualBox, Vagrant]
 author_name: R_Lanffy
 ---
