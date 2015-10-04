@@ -196,6 +196,6 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
 
 至此，一个简单的，垮平台的vagrant开发环境就配置好了。但虚拟机中却什么都没有安装，比如php，mysql，apache等。
 
-在后面的文章中，我会准备一些shell脚本，使得在第一次启动虚拟机时，安装好常用的或者是你所需要的所有软件。
+在[下一篇文章](http://lanffy.github.io/2015/10/04/使用virtualbox_+_vagrant打造属于自己的开发环境2/)中，我会准备一些shell脚本，使得在第一次启动虚拟机时，安装好常用的或者是你所需要的所有软件。
 当然，你也可以参考官方文档自己动手。
 
