@@ -34,22 +34,20 @@ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
     	worker_connections 1024;
     }
     http {
-    	server {
-		listen 80;
-		server_name test.com www.test.com;
-		charset utf-8;
-
-		location / {
-			root /projects/;
-			index index.html index.htm;
-		}
-
-		#redirect server error pages to the static page /50x.html
-		error_page 500 502 503 504 /50x.html;
-		location = /50x.html {
-			root /projects/;
-		}
-	}
+        server {
+            listen 80;
+            server_name test.com www.test.com;
+            charset utf-8;
+            location / {
+                root /projects/;
+                index index.html index.htm;
+            }
+            #redirect server error pages to the static page /50x.html
+            error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+                root /projects/;
+            }
+        }
     }
 
 ###添加HTML页面
