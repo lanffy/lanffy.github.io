@@ -30,14 +30,11 @@ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
 ###修改配置
 打开`/etc/nginx/nginx.conf`,将里面的内容更改如下：
 
-```
-
-events {
-	worker_connections 1024;
-}
-
-http {
-	server {
+    events {
+    	worker_connections 1024;
+    }
+    http {
+    	server {
 		listen 80;
 		server_name test.com www.test.com;
 		charset utf-8;
@@ -54,27 +51,21 @@ http {
 		}
 	}
 
-}
-
-```
+    }
 
 ###添加HTML页面
 `cd /projects`
 
 在该目录下新建index.html或者index.htm文件，内容如下：
 
-```
-
-<html>
-    <head>
-        <title>R_Lanffy</title>
-    </head>
-    <body>
-        Hello World
-    </body>
-</html>
-
-```
+    <html>
+        <head>
+            <title>R_Lanffy</title>
+        </head>
+        <body>
+            Hello World
+        </body>
+    </html>
 
 ###访问测试
 在真实机浏览器中输入地址：`test.com:8080`或者`www.test.com:8080`即可访问到虚拟机中的nginx相关配置。
