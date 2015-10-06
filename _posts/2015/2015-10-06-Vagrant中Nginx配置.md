@@ -31,6 +31,7 @@ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
 打开`/etc/nginx/nginx.conf`,将里面的内容更改如下：
 
 ```
+
 events {
 	worker_connections 1024;
 }
@@ -54,6 +55,7 @@ http {
 	}
 
 }
+
 ```
 
 ###添加HTML页面
@@ -62,6 +64,7 @@ http {
 在该目录下新建index.html或者index.htm文件，内容如下：
 
 ```
+
 <html>
     <head>
         <title>R_Lanffy</title>
@@ -70,6 +73,7 @@ http {
         Hello World
     </body>
 </html>
+
 ```
 
 ###访问测试
