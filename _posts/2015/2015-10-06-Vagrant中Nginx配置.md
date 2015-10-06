@@ -50,7 +50,6 @@ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
 			root /projects/;
 		}
 	}
-
     }
 
 ###添加HTML页面
