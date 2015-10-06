@@ -51,7 +51,7 @@ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
     }
 
 ###添加HTML页面
-`cd /projects`
+在虚拟机中：`cd /projects`
 
 在该目录下新建index.html或者index.htm文件，内容如下：
 
