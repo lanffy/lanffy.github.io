@@ -116,7 +116,7 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
     #   sudo apt-get update
     #   sudo apt-get install -y apache2
     # SHELL
-  end
+    #end
 
 修改配置参数：
 **config.vm.box = "base"** 修改为**config.vm.box = "hashicorp/precise32"**
@@ -159,7 +159,7 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
 
 目录如下：```file/box/precise32.box```
 
-**添加配置：**
+**修改配置：**
 
 在Vagrantfile文件中的config.vm.box配置之后添加如下配置：
 
