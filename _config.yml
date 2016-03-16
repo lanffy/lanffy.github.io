@@ -2,7 +2,7 @@ permalink: pretty
 #markdown: kramdown
 #markdown: maruku
 #markdown_ext: markdown,mkd,mkdn,md
-highlighter: pygments
+highlighter: rouge
 paginate: 10
 exclude: ['Rakefile', 'Gemfile', 'Gemfile.lock', 'config.rb', 'run']
 
