@@ -1,10 +1,11 @@
 permalink: pretty
-#markdown: kramdown
+markdown: kramdown
 #markdown: maruku
 #markdown_ext: markdown,mkd,mkdn,md
 highlighter: rouge
 paginate: 10
 exclude: ['Rakefile', 'Gemfile', 'Gemfile.lock', 'config.rb', 'run']
+excerpt_separator: <!--more-->
 
 kramdown:
   auto_ids: true
