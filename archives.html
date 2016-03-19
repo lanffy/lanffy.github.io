@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Archives
+title: 一个风向的Blog-所有文章
 page_name: archives
 ---
 
@@ -17,7 +17,6 @@ page_name: archives
     <h4>{{this_month}}</h4>
     <ul>
   {% endif %}
-
   <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a id="title" href="{{ post.url }}">{{ post.title }}</a>>><a id="comment" href='{{ post.url }}#disqus_thread'>View Comments</a></li>
 
   {% if forloop.last %}

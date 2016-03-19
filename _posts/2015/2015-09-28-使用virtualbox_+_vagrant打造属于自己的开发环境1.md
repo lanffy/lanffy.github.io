@@ -1,8 +1,9 @@
 ---
 layout: post
 title: " 使用VirtualBox + Vagrant打造属于自己的开发环境1"
-tags: [VirtualBox, Vagrant]
+tags: [Vagrant]
 author_name: R_Lanffy
+---
 ---
 
 ![vagrant](http://sfault-image.b0.upaiyun.com/c1/eb/c1eb8c927b0b255d6de2532ae2564877)
@@ -21,16 +22,18 @@ Vagrant就是为了解决这个问题而存在的，通过Vagrant可以打造专
 
 我曾经就因为数据库安装失败而重装系统过。我想肯定不止我一个人有这样的经历。
 
-##配置步骤
+## 配置步骤
 
-###安装VirtualBox
+### 安装VirtualBox
+
 虚拟系统运行在VirtualBox中，类似的工具还有VMware，但后者是收费的。
 
 VirtualBox下载地址: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads).
 
 它支持多个平台，请根据自己的情况选择对应的版本。
 
-###安装Vagrant
+### 安装Vagrant
+
 Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html).
 
 选择最新的版本即可。
@@ -40,7 +43,8 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
 
 至此，基本的工具已经安装完成了。
 
-###初始化Vagrant
+### 初始化Vagrant
+
 安装完成后，在想要搭建环境的目录下执行命令```vagrant init```
 
 在当前目录下会生成一个Vagrantfile配置文件，内容如下：
@@ -131,14 +135,16 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
 
     该参数的含义是：使用当前目录下的projects目录作为项目目录，它与虚拟机的/projects目录相对应，并且内容保持同步。
     
-###创建项目目录projects
+### 创建项目目录projects
+
 配置文件中用到了当前目录下的projects目录，所以需要创建该目录，不然启动vagrant时会报错。
 
 ```mkdir ./projects```
 
 ***注：如果你安装Vagrant时使用了sudo，那么之后的所有vagrant命令前都需要加上sudo!!!***
 
-###启动Vagrant
+### 启动Vagrant
+
 经过上面的步骤后，就可以启动Vagrant了，但是一般不推荐这样做。
 
 
@@ -146,7 +152,8 @@ Vagrant下载地址：[https://www.vagrantup.com/downloads.html](https://www.vag
 
 下面给出推荐的方法：
 
-###下载镜像
+### 下载镜像
+
 官方封装好的Ubuntu基础镜像：
 
 Ubuntu precise 32 VirtualBox [http://files.vagrantup.com/precise32.box](http://files.vagrantup.com/precise32.box)
@@ -179,7 +186,7 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
 
 ***Windows 用户注意：Windows 终端并不支持 ssh，所以需要安装第三方 SSH 客户端，比如：Putty、Xshell 等。***
 
-###常用命令
+### 常用命令
 
     vagrant init  # 初始化
     vagrant up  # 启动虚拟机
@@ -189,10 +196,7 @@ Ubuntu precise 64 VirtualBox [http://files.vagrantup.com/precise64.box](http://f
     vagrant status  # 查看虚拟机运行状态
     vagrant destroy  # 销毁当前虚拟机
 
-
-
 更多内容请查阅官方文档 [http://docs.vagrantup.com/v2/cli/index.html](http://docs.vagrantup.com/v2/cli/index.html)
-
 
 至此，一个简单的，垮平台的vagrant开发环境就配置好了。但虚拟机中却什么都没有安装，比如php，mysql，apache等。
 

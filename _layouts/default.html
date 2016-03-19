@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{ page.title }} - 风一</title>
-  <link rel="stylesheet" media="screen" href="/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="/css/default.css" />
-  <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
-  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="R_Lanffy's blog" />
+    <title>{{page.title}}</title>
+    <link rel="stylesheet" media="screen" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/default.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css"/>
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="R_Lanffy's blog"/>
+    <meta name="description" content="{{page.title}}"/>
+    <meta name="keywords" content="{{page.title}}"/>
+    <link rel="canonical" href="{{site.url}}" >
 </head>
 
 <body class='{{ page.page_name }}'>
-  <div class="container">
+<div class="container">
     <div class="row">
-		<div class="span4 sidebar affix">
-			<div class="well">
-				<h2 class='site-title'>
-					<a href="{{ site.production_url }}">风一</a>
-				</h2>
+        <div class="span4 sidebar affix">
+            <div class="well">
+                <h2 class='site-title'>
+                    <a href="{{ site.production_url }}">一个风向</a>
+                </h2>
 
-				<p>A blog about writing software and things.</p>
+                <p>A blog about writing software and things.</p>
 
-				<ul id="navigation" class="clearfix">
-					<li class='about'><a href='/about/'>关于我</a></li>
-					<li class='archives'><a href='/archives/'>我的文章</a></li>
-                    <li class='tag'><a href='/tags/'>标签</a></li>
-					<li ><a href='http://lanffy.github.io/Albums/' target=_blank>我的照片</a></li>
-				</ul>
-			</div>
-			<div align="center"></div>
-			<br/>
-		</div>
-      <div class="span8 main offset4">
-        <div class="well">
-          {{ content }}
+                <ul id="navigation" class="clearfix">
+                    <li class='about'><a href='/about/'>About</a></li>
+                    <li class='archives'><a href='/archives/'>All Posts</a></li>
+                    <li class='tag'><a href='/tags/'>Tags</a></li>
+                    <li><a href='http://lanffy.github.io/Albums/' target=_blank>Photos</a></li>
+                </ul>
+            </div>
+            <div align="center"></div>
+            <br/>
         </div>
-      </div>
-
-      <div id="bottom" class="span8 offset4">
-        <div class="well">
-          <a href="/about/">About</a> |
-          <a href="/archives/">Archives</a> |
-          <a href="/tags/">Tags</a> |
-		  <a href='http://lanffy.github.io/Albums/' target=_blank>Photos</a>		  
+        <div class="span8 main offset4">
+            <div class="well">
+                {{ content }}
+            </div>
         </div>
-      </div>
+
+        <div id="bottom" class="span8 offset4">
+            <div class="well">
+                <a href="/about/">About</a> |
+                <a href="/archives/">All Posts</a> |
+                <a href="/tags/">Tags</a> |
+                <a href='http://lanffy.github.io/Albums/' target=_blank>Photos</a>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 
-  <script src="/javascripts/jquery.min.js"></script>
-  <script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
 
-   <script type="text/javascript">
+<script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'lanffy'; // required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
-        var s = document.createElement('script'); s.async = true;
+        var s = document.createElement('script');
+        s.async = true;
         s.type = 'text/javascript';
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
-    </script>
+</script>
 </body>
 </html>
 

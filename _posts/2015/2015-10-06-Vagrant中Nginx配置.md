@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "Vagrant中Nginx配置"
-tags: [VirtualBox, Vagrant]
+tags: [Vagrant]
 author_name: R_Lanffy
+---
 ---
 
 ![vagrant](http://sfault-image.b0.upaiyun.com/c1/eb/c1eb8c927b0b255d6de2532ae2564877)
@@ -21,13 +22,14 @@ config.vm.network "forwarded_port", guest: 80, host: 8080
 
 使用`vagrant ssh`命令进入虚拟机
 
-###备份默认nginx配置文件
+### 备份默认nginx配置文件
 
 ```
 sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
 ```
 
-###修改配置
+### 修改配置
+
 打开`/etc/nginx/nginx.conf`,将里面的内容更改如下：
 
     user www-data;
@@ -115,7 +117,8 @@ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
 	    }
     }
 
-###添加HTML页面
+### 添加HTML页面
+
 在虚拟机中：`cd /projects`
 
 在该目录下新建index.html或者index.htm文件，内容如下：
@@ -129,14 +132,15 @@ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.back
         </body>
     </html>
 
-##重启Vagrant
+## 重启Vagrant
+
 `vagrant reload`
 
-##修改hosts
+## 修改hosts
 `sudo vim /etc/hosts`
 添加：`127.0.0.1	www.lanffy.com`
 
-###访问测试
+### 访问测试
 在真实机浏览器中输入地址：`lanffy.com:8080`或者`www.lanffy.com:8080`即可访问到虚拟机中的nginx相关配置。
 
 **如果想达到输入test.com就能访问的目的，是需要将Vagrantfile文件中的8080修改为80**

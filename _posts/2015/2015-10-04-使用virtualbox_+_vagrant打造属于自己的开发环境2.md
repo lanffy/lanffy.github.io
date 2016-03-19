@@ -1,8 +1,9 @@
 ---
 layout: post
 title: " 使用VirtualBox + Vagrant打造属于自己的开发环境2"
-tags: [VirtualBox, Vagrant]
+tags: [Vagrant]
 author_name: R_Lanffy
+---
 ---
 
 ![vagrant](http://sfault-image.b0.upaiyun.com/c1/eb/c1eb8c927b0b255d6de2532ae2564877)
