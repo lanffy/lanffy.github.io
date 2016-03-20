@@ -15,4 +15,4 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-production_url: http://lanffy.github.com
+production_url: http://lanffy.github.io
