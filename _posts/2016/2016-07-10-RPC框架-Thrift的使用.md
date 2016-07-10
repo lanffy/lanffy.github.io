@@ -10,15 +10,13 @@ author_name: R_Lanffy
 
 Thrift 是一种接口描述语言,通过[二进制通信协议](https://en.wikipedia.org/wiki/Binary_protocol)为多种编程语言定义和创建服务。Thrift是一种可扩展的跨语言服务的RPC框架,由Facebook开发并且开源。
 
-# 应用
-
 ## 安装
 
-### MAC
+#### MAC
 
 ``brew install thrift``
 
-其他安装方式
+#### 其他安装方式
 
 下载安装包:[http://www.apache.org/dyn/closer.cgi?path=/thrift/0.9.3/thrift-0.9.3.tar.gz](http://www.apache.org/dyn/closer.cgi?path=/thrift/0.9.3/thrift-0.9.3.tar.gz)
 
