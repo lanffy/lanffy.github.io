@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "type": "project",
+  "require":{
+    "apache/thrift":"0.9.*"
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    },
+    "thrift":{
+      "type":"git",
+      "url":"git@gitlab.corp.anjuke.com:_site-service/thrift.git"
+    }
+  }
+}

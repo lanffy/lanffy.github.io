@@ -1,0 +1,455 @@
+---
+layout: post
+title: "RPC框架-Thrift的使用"
+tags: [Thrift]
+author_name: R_Lanffy
+---
+---
+
+# Apache Thrift
+
+Thrift 是一种接口描述语言,通过[二进制通信协议](https://en.wikipedia.org/wiki/Binary_protocol)为多种编程语言定义和创建服务。Thrift是一种可扩展的跨语言服务的RPC框架,由Facebook开发并且开源。
+
+# 应用
+
+## 安装
+
+### MAC
+
+``brew install thrift``
+
+其他安装方式
+
+下载安装包:[http://www.apache.org/dyn/closer.cgi?path=/thrift/0.9.3/thrift-0.9.3.tar.gz](http://www.apache.org/dyn/closer.cgi?path=/thrift/0.9.3/thrift-0.9.3.tar.gz)
+
+解压后进入目录执行:``./configure && make``
+
+## 编写IDL文件
+
+安装好Thrift之后需要创建一个``.thrift``结尾的文件。该文件定义了thrift中的类型和服务。这些被定义的服务将被实现且能够被客户端调用。
+
+IDL即:Interface definition language 接口描述语言,它是Thrift自己的一套接口定义语法。官方语法定义如下:
+
+```
+    /*
+     * Licensed to the Apache Software Foundation (ASF) under one
+     * or more contributor license agreements. See the NOTICE file
+     * distributed with this work for additional information
+     * regarding copyright ownership. The ASF licenses this file
+     * to you under the Apache License, Version 2.0 (the
+     * "License"); you may not use this file except in compliance
+     * with the License. You may obtain a copy of the License at
+     *
+     *   http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing,
+     * software distributed under the License is distributed on an
+     * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     * KIND, either express or implied. See the License for the
+     * specific language governing permissions and limitations
+     * under the License.
+     */
+
+    # Thrift Tutorial
+    # Mark Slee (mcslee@facebook.com)
+    #
+    # This file aims to teach you how to use Thrift, in a .thrift file. Neato. The
+    # first thing to notice is that .thrift files support standard shell comments.
+    # This lets you make your thrift file executable and include your Thrift build
+    # step on the top line. And you can place comments like this anywhere you like.
+    #
+    # Before running this file, you will need to have installed the thrift compiler
+    # into /usr/local/bin.
+
+    /**
+     * The first thing to know about are types. The available types in Thrift are:
+     *
+     *  bool        Boolean, one byte
+     *  i8 (byte)   Signed 8-bit integer
+     *  i16         Signed 16-bit integer
+     *  i32         Signed 32-bit integer
+     *  i64         Signed 64-bit integer
+     *  double      64-bit floating point value
+     *  string      String
+     *  binary      Blob (byte array)
+     *  map<t1,t2>  Map from one type to another
+     *  list<t1>    Ordered list of one type
+     *  set<t1>     Set of unique elements of one type
+     *
+     * Did you also notice that Thrift supports C style comments?
+     */
+
+    // Just in case you were wondering... yes. We support simple C comments too.
+
+    /**
+     * Thrift files can reference other Thrift files to include common struct
+     * and service definitions. These are found using the current path, or by
+     * searching relative to any paths specified with the -I compiler flag.
+     *
+     * Included objects are accessed using the name of the .thrift file as a
+     * prefix. i.e. shared.SharedObject
+     */
+    include "shared.thrift"
+
+    /**
+     * Thrift files can namespace, package, or prefix their output in various
+     * target languages.
+     */
+    namespace cpp tutorial
+    namespace d tutorial
+    namespace dart tutorial
+    namespace java tutorial
+    namespace php tutorial
+    namespace perl tutorial
+    namespace haxe tutorial
+
+    /**
+     * Thrift lets you do typedefs to get pretty names for your types. Standard
+     * C style here.
+     */
+    typedef i32 MyInteger
+
+    /**
+     * Thrift also lets you define constants for use across languages. Complex
+     * types and structs are specified using JSON notation.
+     */
+    const i32 INT32CONSTANT = 9853
+    const map<string,string> MAPCONSTANT = {'hello':'world', 'goodnight':'moon'}
+
+    /**
+     * You can define enums, which are just 32 bit integers. Values are optional
+     * and start at 1 if not supplied, C style again.
+     */
+    enum Operation {
+      ADD = 1,
+      SUBTRACT = 2,
+      MULTIPLY = 3,
+      DIVIDE = 4
+    }
+
+    /**
+     * Structs are the basic complex data structures. They are comprised of fields
+     * which each have an integer identifier, a type, a symbolic name, and an
+     * optional default value.
+     *
+     * Fields can be declared "optional", which ensures they will not be included
+     * in the serialized output if they aren't set.  Note that this requires some
+     * manual management in some languages.
+     */
+    struct Work {
+      1: i32 num1 = 0,
+      2: i32 num2,
+      3: Operation op,
+      4: optional string comment,
+    }
+
+    /**
+     * Structs can also be exceptions, if they are nasty.
+     */
+    exception InvalidOperation {
+      1: i32 whatOp,
+      2: string why
+    }
+
+    /**
+     * Ahh, now onto the cool part, defining a service. Services just need a name
+     * and can optionally inherit from another service using the extends keyword.
+     */
+    service Calculator extends shared.SharedService {
+
+      /**
+       * A method definition looks like C code. It has a return type, arguments,
+       * and optionally a list of exceptions that it may throw. Note that argument
+       * lists and exception lists are specified using the exact same syntax as
+       * field lists in struct or exception definitions.
+       */
+
+       void ping(),
+
+       i32 add(1:i32 num1, 2:i32 num2),
+
+       i32 calculate(1:i32 logid, 2:Work w) throws (1:InvalidOperation ouch),
+
+       /**
+        * This method has a oneway modifier. That means the client only makes
+        * a request and does not listen for any response at all. Oneway methods
+        * must be void.
+        */
+       oneway void zip()
+
+    }
+
+    /**
+     * That just about covers the basics. Take a look in the test/ folder for more
+     * detailed examples. After you run this file, your generated code shows up
+     * in folders with names gen-<language>. The generated code isn't too scary
+     * to look at. It even has pretty indentation.
+     */
+```
+
+根据语法,编写简单的IDL文件如下:
+
+文件名: exampleService.thrift
+
+接口定义如下:
+
+```
+    namespace java example
+    namespace php example
+    
+    /**
+     * 异常代码
+     */
+    enum ErrorCode {
+        /**
+         * 成功
+         */
+        SUCCESS = 0,
+    
+        /**
+         * 失败
+         */
+        FAILED = -1,
+    }
+    
+    /**
+     * 异常代码含义
+     */
+    const map<i16,string> ERROR_CODE_MESSAGE = {
+        ErrorCode.SUCCESS: 'success',
+        ErrorCode.FAILED: 'failed',
+    }
+    
+    /**
+     * 返回数据结构
+     */
+    struct Data {
+        /**
+         * 加数
+         */
+        1: i32 data_one,
+    
+        /**
+         * 被加数
+         */
+        2: i32 data_two,
+    
+        /**
+         * 和
+         */
+        3: i32 sum,
+    }
+    
+    /**
+     * 服务返回结果
+     */
+    struct Result {
+        1: i32 code;
+        2: string message;
+        3: optional Data data;
+    }
+    
+    /**
+     * 服务返回结果
+     */
+    service CalcService {
+        /**
+         * 计算两个数的和
+         */
+        Result sum(1:i32 data_one, 2:i32 data_two),
+    }
+    
+```
+
+接口定义完成之后生成响应语言的代码,执行:``thrift -r -gen php:server -v -strict -out /path/to/code/ /path/to/exampleService.thrift``
+
+## 服务实现
+
+服务定义好之后,需要实现服务,实现服务的文件名称:``PhpService.php``,内容如下:
+
+```php
+<?php
+namespace example;
+error_reporting(E_ALL);
+
+require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/CalcService.php';
+require_once __DIR__ . '/Types.php';
+
+use Thrift\ClassLoader\ThriftClassLoader;
+
+$loader = new ThriftClassLoader();
+$loader->registerNamespace('Thrift', __DIR__ . '/../vendor/apache/thrift/lib/php/lib');
+$loader->register();
+
+if (php_sapi_name() == 'cli') {
+    ini_set("display_errors", "stderr");
+}
+
+use Thrift\Protocol\TBinaryProtocol;
+use Thrift\Transport\TPhpStream;
+use Thrift\Transport\TBufferedTransport;
+
+class CalculatorHandler implements CalcServiceIf
+{
+
+    /**
+     * 计算两个数的和
+     *
+     * @param int $data_one
+     * @param int $data_two
+     * @return \example\Result 服务返回结果
+     *
+     */
+    public function sum($data_one, $data_two)
+    {
+        if (!is_numeric($data_one) || !is_numeric($data_two)) {
+            $error_code = ErrorCode::FAILED;
+            $messages = Constant::get('ERROR_CODE_MESSAGE');
+            $msg = $messages[$error_code];
+            $result = new Result();
+            $result->code = $error_code;
+            $result->message = $msg;
+            return $result;
+        }
+        $code = ErrorCode::SUCCESS;
+        $messages = Constant::get('ERROR_CODE_MESSAGE');
+        $msg = $messages[$code];
+        $result = new Result();
+        $result->code = $code;
+        $result->message = $msg;
+
+        $result_data = new Data();
+        $result_data->data_one = $data_one;
+        $result_data->data_two = $data_two;
+        $result_data->sum = $data_one + $data_two;
+
+        $result->data = $result_data;
+        return $result;
+    }
+}
+
+header('Content-Type', 'application/x-thrift');
+if (php_sapi_name() == 'cli') {
+    echo "\r\n";
+}
+
+$handler = new CalculatorHandler();
+$processor = new CalcServiceProcessor($handler);
+
+$transport = new TBufferedTransport(new TPhpStream(TPhpStream::MODE_R | TPhpStream::MODE_W));
+$protocol = new TBinaryProtocol($transport, true, true);
+
+$transport->open();
+$processor->process($protocol, $protocol);
+$transport->close();
+
+```
+
+## 启动服务
+
+在nginx配置中添加如下配置,监听服务:
+
+```
+server {
+    listen 8080;
+    server_name localhost;
+
+    location ~* ^/php/PhpServer {
+        rewrite . /index.php last;
+    }
+
+    location = /index.php {
+        internal;
+        fastcgi_pass localhost:9000;
+        fastcgi_param SCRIPT_FILENAME /path/to/PhpService.php;
+        include fastcgi_params;
+    }
+}
+```
+
+其中的``fastcgi_param``参数的值是``PhpService.php``文件的绝对路径.
+
+执行``nginx -s reload``重启nginx。
+
+## 客户端代码
+
+客户端文件名:PhpClient.php,内容如下:
+
+```php
+<?php
+
+namespace example;
+
+error_reporting(E_ALL);
+require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/CalcService.php';
+require_once __DIR__ . '/Types.php';
+
+use Thrift\ClassLoader\ThriftClassLoader;
+
+$loader = new ThriftClassLoader();
+$loader->registerNamespace('Thrift', __DIR__ . '/../thrift/lib/php/lib');
+$loader->register();
+
+use Thrift\Protocol\TBinaryProtocol;
+use Thrift\Transport\THttpClient;
+use Thrift\Transport\TBufferedTransport;
+use Thrift\Exception\TException;
+
+
+try {
+    $socket = new THttpClient('localhost', 8080, '/php/PhpServer');
+    $transport = new TBufferedTransport($socket, 1024, 1024);
+    $protocol = new TBinaryProtocol($transport);
+
+    /**
+     * @var CalcServiceIf
+     */
+    $client = new CalcServiceClient($protocol);
+    $transport->open();
+
+    $sum = $client->sum(1, 2);
+    var_dump($sum);
+
+    $transport->close();
+    echo '<br /> DONE <br />';
+
+} catch (TException $tx) {
+    print 'TException: ' . $tx->getMessage() . "\n";
+}
+
+```
+
+### 执行客户端
+
+执行客户端代码,请求服务。
+
+在PhpStorm中执行PhpClient.php文件,会自动打开默认浏览器,通过浏览器执行POST请求,将请求发送到nginx。
+
+打印输出如下:
+
+```
+object(example\Result)#9 (3) {
+    ["code"]=> int(0)
+    ["message"]=> string(7) "success"
+    ["data"]=> object(example\Data)#10 (3) {
+        ["data_one"]=> int(1)
+        ["data_two"]=> int(2)
+        ["sum"]=> int(3)
+    }
+}
+```
+
+可以看到返回的数据结构和我们的thrift文件中定义的数据结构是一模一样的。
+
+## 远程部署与访问
+
+上面的服务端代码和客户端代码可以部署到不通的主机上,实现远程调用。而且,客户端代码可以有多种实现方式,比如JAVA,Python等。
+
+### 问题
+
+* 多个客户端如何保证服务端解析代码的一致性呢?
+* 服务端代码和客户端代码该如何在应用中管理呢?
+
+等等一致性问题都可以通过composer来管理。
