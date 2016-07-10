@@ -265,7 +265,7 @@ IDL即:Interface definition language 接口描述语言,它是Thrift自己的一
 
 服务定义好之后,需要实现服务,实现服务的文件名称:``PhpService.php``,内容如下:
 
-详细的代码请查看：[thrift_example_code](https://github.com/lanffy/lanffy.github.io/tree/master/code/php/thrift)
+详细的代码请查看：[thrift_example_code](https://github.com/lanffy/thrift_example/tree/master/code/php/thrift)
 
 ```php
 <?php
@@ -376,7 +376,7 @@ server {
 
 客户端文件名:PhpClient.php,内容如下:
 
-详细的代码请查看：[thrift_example_code](https://github.com/lanffy/lanffy.github.io/tree/master/code/php/thrift)
+详细的代码请查看：[thrift_example_code](https://github.com/lanffy/thrift_example/tree/master/code/php/thrift)
 
 ```php
 <?php
