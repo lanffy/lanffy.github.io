@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "如何去掉drwxr-xr-x@中的@符号Linux文件扩展信息"
+categories: [操作系统]
 tags: [Linux]
 author_name: R_Lanffy
 ---

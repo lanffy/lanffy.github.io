@@ -1,19 +1,30 @@
-permalink: pretty
+title: 一个风向的Blog
+
+# 自定义post url
+permalink: /:year/:month/:day/:title
+timezone: Asia/Shanghai
+
+# Overriden by GitHub Pages: https://help.github.com/articles/using-jekyll-with-pages#configuring-jekyll
+safe: true
+lsi: false
+
 markdown: kramdown
-#markdown: maruku
-#markdown_ext: markdown,mkd,mkdn,md
-highlighter: rouge
-paginate: 10
-exclude: ['Rakefile', 'Gemfile', 'Gemfile.lock', 'config.rb', 'run']
-excerpt_separator: <!--more-->
-
-
 kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
+    input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
+    extensions:
+    - autolink
+    - footnotes
+    - smart
+hard_wrap: false
+#  use_coderay: true
+syntax_highlighter: rouge
+#  coderay:
+#  coderay_line_numbers:  nil
 
-production_url: http://lanffy.github.io
+# White-listed plugins
+gems:
+  - jekyll-sitemap
+
+production_url: http://raoliangblog.com
+github_url: https://github.com/lanffy
+weibo_url: http://weibo.com/raoliang

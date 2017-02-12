@@ -1,0 +1,36 @@
+---
+layout: default
+title: 文章列表
+category: blog
+---
+
+<link rel="stylesheet" href="/css/blog.css">
+<!--<div class="subheader-container">-->
+    <!--<div class="inner">-->
+        <!--<nav class="sub-nav">-->
+            <!--<a class="{% if page.category == 'blog' %} selected {% endif %}" href="/">时间线</a>-->
+            <!--<a class="{% if page.category == 'categories' %} selected {% endif %}" href="/categories.html">归档</a>-->
+        <!--</nav>-->
+    <!--</div>-->
+<!--</div>-->
+<section class="inner">
+    <ul class="posts">
+        {% for post in site.posts %}
+        {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
+        {% if year != y %}
+        {% assign year = y %}
+        <span class="listing-seperator">{{ y }}</span>
+        {% endif %}
+        <a class='post-link-in-posts' href="{{ site.url }}{{ post.url }}" target="_blank">
+            <span class='date'>{{ post.date | date_to_string }}</span>
+            <span class='article'>{{ post.title }}</span>
+            <div class="tag-in-index-post">
+                <i class="fa fa-tags"></i>
+                <div class="tag">
+                    &nbsp;{{ post.tags | first }}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </ul>
+</section>

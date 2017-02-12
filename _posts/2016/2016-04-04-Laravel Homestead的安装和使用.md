@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Laravel Homestead的安装和使用"
+categories: [开发环境]
 tags: [Laravel]
 author_name: R_Lanffy
 ---

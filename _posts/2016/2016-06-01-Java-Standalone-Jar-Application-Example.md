@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Java Standalone Jar Application Example"
+categories: [编程语言]
 tags: [JAVA]
 author_name: R_Lanffy
 ---

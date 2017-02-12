@@ -1,39 +1,36 @@
 ---
 layout: default
-title: 一个风向的Blog
-page_name: Home
+title: 一个风向的博客
+category: blog
 ---
 
-<h2>Archives</h2>
-
-{% for post in site.posts  %}
-  {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-  {% capture this_month %}{{ post.date | date: "%B" }}{% endcapture %}
-  {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-  {% capture next_month %}{{ post.previous.date | date: "%B" }}{% endcapture %}
-
-  {% if forloop.first %}
-    <h3>{{this_year}}</h3>
-    <h4>{{this_month}}</h4>
-    <ul>
-  {% endif %}
-  <!--<li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a id="title" href="{{ post.url }}">{{ post.title }}</a>>><a id="comment" href='{{ post.url }}#disqus_thread'>View Comments</a></li>-->
-  <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &nbsp; >> &nbsp; <a id="title" href="{{ post.url }}">{{ post.title }}</a></li>
-
-  {% if forloop.last %}
+<link rel="stylesheet" href="/css/blog.css">
+<!--<div class="subheader-container">-->
+    <!--<div class="inner">-->
+        <!--<nav class="sub-nav">-->
+            <!--<a class="{% if page.category == 'blog' %} selected {% endif %}" href="/">时间线</a>-->
+            <!--<a class="{% if page.category == 'categories' %} selected {% endif %}" href="/categories.html">归档</a>-->
+        <!--</nav>-->
+    <!--</div>-->
+<!--</div>-->
+<section class="inner">
+    <ul class="posts">
+        {% for post in site.posts %}
+        {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
+        {% if year != y %}
+        {% assign year = y %}
+        <span class="listing-seperator">{{ y }}</span>
+        {% endif %}
+        <a class='post-link-in-posts' href="{{ post.url }}" target="_blank">
+            <span class='date'>{{ post.date | date_to_string }}</span>
+            <span class='article'>{{ post.title }}</span>
+            <div class="tag-in-index-post">
+                <i class="fa fa-tags"></i>
+                <div class="tag">
+                    &nbsp;{{ post.tags | first }}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
     </ul>
-  {% else %}
-    {% if this_year != next_year %}
-      </ul>
-      <h3>{{next_year}}</h3>
-      <h4>{{next_month}}</h4>
-      <ul>
-    {% else %}    
-      {% if this_month != next_month %}
-        </ul>
-        <h4>{{next_month}}</h4>
-        <ul>
-      {% endif %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
+</section>

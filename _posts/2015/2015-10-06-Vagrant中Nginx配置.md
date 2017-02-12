@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Vagrant中Nginx配置"
+categories: [开发环境]
 tags: [Vagrant]
 author_name: R_Lanffy
 ---
