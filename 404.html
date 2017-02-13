@@ -1,0 +1,18 @@
+---
+layout: default
+title: 出错啦!先看点别的吧~
+---
+<h1>页面不存在!先看点别的吧~  <a href="{{site.production_url}}">返回首页</a></h1>
+
+<link rel="stylesheet" href="/css/blog.css">
+<section class="inner">
+    <ul class="posts">
+        {% for post in site.posts %}
+        <li>
+            <a href="{{ site.url }}{{ post.url }}">
+                <span class='article'>{{ post.title }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
