@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "记MAC OSX 编译安装PHP7.0.16 中遇到的异常情况"
+title: "记MAC OS X 编译安装PHP7.0.16 中遇到的异常情况"
 categories: [编程语言]
 tags: [PHP]
 author_name: R_Lanffy
 ---
 ---
 
-## MAC OSX 编译安装PHP7.0.16
+## MAC OS X 编译安装PHP7.0.16
 
 主要内容包括:php7以上版本的编译,安装,php-fpm配置。
 
@@ -129,7 +129,7 @@ author_name: R_Lanffy
             sudo ln -s /usr/local/php/php7/bin/php-cgi /usr/local/bin/php-cgi
             sudo ln -s /usr/local/php/php7/bin/php-config /usr/local/bin/php-config
             sudo ln -s /usr/local/php/php7/bin/phpize /usr/local/bin/phpize
-    
+
 4. 完成上诉步骤后,执行: ``php -v``,校验版本
 
 
