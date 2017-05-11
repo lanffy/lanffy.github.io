@@ -42,12 +42,7 @@ mysql> explain select * from convert_test where areacode=0001 and period>='20170
 
 结果如下：
 
-    +----+-------------+--------------+------------+------+---------------------+------+---------+------+------+----------+-------------+
-    | id | select_type | table        | partitions | type | possible_keys       | key  | key_len | ref  | rows | filtered | Extra       |
-    +----+-------------+--------------+------------+------+---------------------+------+---------+------+------+----------+-------------+
-    |  1 | SIMPLE      | convert_test | NULL       | ALL  | idx_areacode_period | NULL | NULL    | NULL |  503 |     1.11 | Using where |
-    +----+-------------+--------------+------------+------+---------------------+------+---------+------+------+----------+-------------+
-    1 row in set, 3 warnings (0.00 sec)
+![explain](http://7xjh09.com1.z0.glb.clouddn.com/github_blogexplain.png)
 
 可以看到，这里是没有用到索引的。
 
@@ -63,12 +58,7 @@ mysql> explain select * from convert_test where areacode='0001' and period>='201
 
 结果如下：
 
-    +----+-------------+--------------+------------+-------+---------------------+---------------------+---------+------+------+----------+-----------------------+
-    | id | select_type | table        | partitions | type  | possible_keys       | key                 | key_len | ref  | rows | filtered | Extra                 |
-    +----+-------------+--------------+------------+-------+---------------------+---------------------+---------+------+------+----------+-----------------------+
-    |  1 | SIMPLE      | convert_test | NULL       | range | idx_areacode_period | idx_areacode_period | 40      | NULL |    1 |   100.00 | Using index condition |
-    +----+-------------+--------------+------------+-------+---------------------+---------------------+---------+------+------+----------+-----------------------+
-    1 row in set, 1 warning (0.00 sec)
+![explain2](http://7xjh09.com1.z0.glb.clouddn.com/github_blogexplain2.png)
 
 可以看到完全命中了idx_areacode_period 这个索引。
 
