@@ -74,7 +74,7 @@ mysql> explain select * from convert_test where areacode='0001' and period>='201
 4. 十六进制的值和非数字做比较时，会被当做二进制串
 5. 有一个参数是 TIMESTAMP 或 DATETIME，并且另外一个参数是常量，常量会被转换为 timestamp
 6. 有一个参数是 decimal 类型，如果另外一个参数是 decimal 或者整数，会将整数转换为 decimal 后进行比较，如果另外一个参数是浮点数，则会把 decimal 转换为浮点数进行比较
-7. ** 所有其他情况下，两个参数都会被转换为浮点数再进行比较 **
+7. **所有其他情况下，两个参数都会被转换为浮点数再进行比较**
 
 所以,下面的几个sql语句有相同的效果：
 
