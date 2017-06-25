@@ -24,36 +24,39 @@ author_name: R_Lanffy
 3. 执行 ``./buildconf --force``
 4. 执行
 
-       ./configure --prefix=/usr/local/php/php7 \
-           --with-config-file-path=/usr/local/php/php7/etc \
-           --with-config-file-scan-dir=/usr/local/php/php7/etc/conf.d \
-           --enable-bcmath \
-           --with-bz2 \
-           --with-curl \
-           --enable-filter \
-           --enable-fpm \
-           --with-gd \
-           --enable-gd-native-ttf \
-           --with-freetype-dir \
-           --with-jpeg-dir \
-           --with-png-dir \
-           --enable-intl \
-           --enable-mbstring \
-           --with-mcrypt \
-           --enable-mysqlnd \
-           --with-mysql-sock=/tmp/mysql.sock \
-           --with-mysqli=mysqlnd \
-           --with-pdo-mysql=mysqlnd \
-           --with-pdo-sqlite \
-           --disable-phpdbg \
-           --disable-phpdbg-webhelper \
-           --enable-opcache \
-           --with-openssl \
-           --enable-simplexml \
-           --with-sqlite3 \
-           --enable-xmlreader \
-           --enable-xmlwriter \
-           --enable-zip
+        ./configure --prefix=/usr/local/php/php7 \
+            --with-config-file-path=/usr/local/php/php7/etc \
+            --with-config-file-scan-dir=/usr/local/php/php7/etc/conf.d \
+            --enable-bcmath \
+            --with-bz2 \
+            --with-curl \
+            --enable-filter \
+            --enable-fpm \
+            --with-gd \
+            --enable-gd-native-ttf \
+            --with-freetype-dir \
+            --with-jpeg-dir \
+            --with-png-dir \
+            --enable-intl \
+            --enable-mbstring \
+            --with-mcrypt \
+            --enable-mysqlnd \
+            --with-mysql-sock=/tmp/mysql.sock \
+            --with-mysqli=mysqlnd \
+            --with-pdo-mysql=mysqlnd \
+            --with-pdo-sqlite \
+            --disable-phpdbg \
+            --disable-phpdbg-webhelper \
+            --enable-opcache \
+            --with-openssl=/usr/local/Cellar/openssl/1.0.2l \
+            --enable-simplexml \
+            --with-sqlite3 \
+            --enable-xmlreader \
+            --enable-xmlwriter \
+            --enable-zip \
+            --enable-sockets \
+            --with-xmlrpc
+
 
 5. 执行 ``make`` 进行编译,在编译过程中,遇到了这个报错:
 
