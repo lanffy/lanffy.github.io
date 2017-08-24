@@ -6,6 +6,7 @@ tags: [PHP]
 author_name: R_Lanffy
 ---
 ---
+
 ![Crawler](http://7xjh09.com1.z0.glb.clouddn.com/blog/Crawler.jpg-Lanffy)
 
 前段时间用Python爬取了一些页面元素数据。但因后端的存储系统暂时没有Python的API接口，无法将数据存储到实体载体中。于是尝试了一下用PHP爬取页面并解析DOM。这里简要记录。
