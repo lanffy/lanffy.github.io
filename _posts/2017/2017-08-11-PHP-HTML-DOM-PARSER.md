@@ -17,7 +17,9 @@ author_name: R_Lanffy
 
 代码下载：[https://github.com/samacs/simple_html_dom](https://github.com/samacs/simple_html_dom)
 
-源码中有很多example，在实际应用中，只需要include simple_html.php 文件就可以了。如下：
+源码中有很多example，在实际应用中，只需要include simple_html.php 文件就可以了。
+
+应用例子如下：
 
 ```php
 <?php
