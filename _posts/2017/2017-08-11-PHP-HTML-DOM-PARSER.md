@@ -22,8 +22,6 @@ author_name: R_Lanffy
 应用例子如下：
 
 ```php
-<?php
-
 include '/path/to/simple_html.php';
 $page_html = file_get_html('page_url'); //获取要爬取的页面的dom对象
 $divs = $page_html->find('a[name=selectDetail]'); //查找页面中name='selectDetail' 的a标签
