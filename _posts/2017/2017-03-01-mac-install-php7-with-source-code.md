@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "记MAC OS X 编译安装PHP7.0.16 中遇到的异常情况"
+title: "MAC OS X 编译安装PHP7"
 categories: [编程语言]
 tags: [PHP]
 author_name: R_Lanffy
