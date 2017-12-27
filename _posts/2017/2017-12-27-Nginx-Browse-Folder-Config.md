@@ -130,11 +130,11 @@ configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module --with-pcr
 
 到这一步就完成配置了，最终页面展示如下：
 
-![FancyIndex-light](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143568330066.jpg-Lanffy)
+![](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143595456540.jpg-Lanffy)
 
 该主题有两种风格，上面一种是light风格，下面的是dark风格：
 
-![FancyIndex-dark](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143572305213.jpg-Lanffy)
+![](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143595999553.jpg-Lanffy)
 
 风格在``/usr/local/nginx/html/Nginx-Fancyindex-Theme/fancyindex.conf;``配置文件中进行修改。
 
