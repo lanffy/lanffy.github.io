@@ -138,3 +138,9 @@ configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module --with-pcr
 
 风格在``/usr/local/nginx/html/Nginx-Fancyindex-Theme/fancyindex.conf;``配置文件中进行修改。
 
+## 参考资料
+
+1. [配置 Nginx 的目录浏览功能](http://www.swiftyper.com/2016/12/08/nginx-autoindex-configuration/)
+2. [Nginx-Fancyindex-Theme](http://perso.crans.org/besson/publis/Nginx-Fancyindex-Theme/?C=S;O=D)
+
+
