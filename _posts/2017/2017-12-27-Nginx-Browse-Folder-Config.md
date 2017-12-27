@@ -7,8 +7,6 @@ author_name: R_Lanffy
 ---
 ---
 
-# Nginx浏览目录配置
-
 在项目中有一个功能需要在浏览器页面中浏览服务器的目录。服务器使用Nginx，而Nginx提供了相应的[ngx_http_autoindex_module](http://nginx.org/en/docs/http/ngx_http_autoindex_module.html) 模块，该模块提供了我们想要的功能。
 
 ## Nginx ngx_http_autoindex_module 模块
@@ -139,5 +137,4 @@ configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module --with-pcr
 ![FancyIndex-dark](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143572305213.jpg)
 
 风格在``/usr/local/nginx/html/Nginx-Fancyindex-Theme/fancyindex.conf;``配置文件中进行修改。
-
 
