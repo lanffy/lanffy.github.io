@@ -132,7 +132,7 @@ configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module --with-pcr
 
 ![FancyIndex-light](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143568330066.jpg-Lanffy)
 
-该注意有两种风格，上面一种是light风格，下面的是dark风格：
+该主题有两种风格，上面一种是light风格，下面的是dark风格：
 
 ![FancyIndex-dark](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143572305213.jpg-Lanffy)
 
