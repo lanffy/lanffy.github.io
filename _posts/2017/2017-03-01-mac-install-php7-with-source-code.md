@@ -28,8 +28,8 @@ author_name: R_Lanffy
             --with-config-file-path=/usr/local/php/php7/etc \
             --with-config-file-scan-dir=/usr/local/php/php7/etc/conf.d \
             --enable-bcmath \
-            --with-bz2 \
-            --with-curl \
+            --with-bz2=/usr/local/opt/bzip2 \
+            --with-curl=/usr/local/opt/curl \
             --enable-filter \
             --enable-fpm \
             --with-gd \
@@ -45,10 +45,13 @@ author_name: R_Lanffy
             --with-mysqli=mysqlnd \
             --with-pdo-mysql=mysqlnd \
             --with-pdo-sqlite \
+            --with-zlib-dir=/usr/local/opt/zlib \
+            --with-iconv=/usr/local/opt/libiconv \
+            --with-icu-dir=/usr/local/opt/icu4c \
             --disable-phpdbg \
             --disable-phpdbg-webhelper \
             --enable-opcache \
-            --with-openssl=/usr/local/Cellar/openssl/1.0.2l \
+            --with-openssl=/usr/local/Cellar/openssl/1.0.2n \
             --enable-simplexml \
             --with-sqlite3 \
             --enable-xmlreader \
@@ -56,6 +59,8 @@ author_name: R_Lanffy
             --enable-zip \
             --enable-sockets \
             --with-xmlrpc
+
+编译配置中，有很多依赖都是写死的路径，你可以根据你自己的路径进行配置。
 
 
 5. 执行 ``make`` 进行编译,在编译过程中,遇到了这个报错:
@@ -83,6 +88,8 @@ author_name: R_Lanffy
         clang: error: linker command failed with exit code 1 (use -v to see invocation)
         make: *** [sapi/cli/php] Error 1
 
+一般报``Undefined symbols for architecture x86_64``这种错误就是找不到编译依赖软件包，这个时候就要手动指明依赖包的路径，如上，是openssl这个依赖找不到，手动指定路径配置如下修改：
+
     **解决办法**
 
     MakeFile 里面找到有 **EXTRA_LIBS** 的一行,删除值中所有的 -lssl 和 -lcrypto,然后在该行的末尾添加 libssl.dylib 和 libcrypto.dylib 的路径: ``/usr/local/opt/openssl/lib/libssl.dylib`` 、 ``/usr/local/opt/openssl/lib/libcrypto.dylib``
@@ -92,6 +99,10 @@ author_name: R_Lanffy
         EXTRA_LIBS = -lz -lresolv -lmcrypt -lstdc++ -liconv -liconv -lpng -lz -ljpeg -lcurl -lbz2 -lm -lxml2 -lz -licucore -lm -lz -lcurl -lxml2 -lz -licucore -l     m -lfreetype -licui18n -licuuc -licudata -licuio -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lz      /usr/local/opt/openssl/lib/libssl.dylib /usr/local/opt/openssl/lib/libcrypto.dylib
 
     继续执行make命令
+
+有一次我升级了liconv，make的时候，报错找不到依赖，所以把上面的值中所有的``-liconv``删除，在后面加上本地的liconv的路径，配置如下：
+
+        EXTRA_LIBS = -lz -lresolv -lmcrypt -lstdc++ -lpng -lz -ljpeg -lcurl -lbz2 -lm -lxml2 -lz -licucore -lm -lz -lcurl -lxml2 -lz -licucore -l     m -lfreetype -licui18n -licuuc -licudata -licuio -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lz      /usr/local/opt/openssl/lib/libssl.dylib /usr/local/opt/openssl/lib/libcrypto.dylib /usr/local/opt/libiconv/lib/libiconv.dylib
 
 6. make命令执行完成没有报错后,执行 ``make install``
 
