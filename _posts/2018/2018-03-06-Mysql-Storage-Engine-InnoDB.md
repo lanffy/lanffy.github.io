@@ -149,7 +149,7 @@ goto loop;
 
 [^1]: 2006年该公司已经被Oracle公司收购。
 
-### 3.4. InnoDBgu关键特性
+### 3.4. InnoDB关键特性
 
 InnoDB存储引擎的关键特性包括：
 
