@@ -362,4 +362,31 @@ Mysql中，添加或者删除列、索引的这类DDL操作，MySQL数据库的�
 
 可以发现，对于量很大、读写频繁的表来说，这样的操作会导致操作时，Mysql服务不可用。
 
+#### 6.1.3 联合索引
+联合索引的数据结构
+![](http://7xjh09.com1.z0.glb.clouddn.com/2018-04-07-15230913362898.jpg)
+
+联合索引应用过程中，主要需要考虑的就是创建联合索引的顺序。判断查询语句是否能够用到该联合索引。
+
+在获取数据和统计数据时，联合索引表现书不一样的，如下：
+
+表 buy_log中有userid和buy_date两列，userid为主键索引，（userid,buy_date）为联合索引，则：
+
+1. ``SELECT * FROM buy_log WHERE buy_date＞='2011-01-01'AND buy_date＜'2011-02-01'`` 这个获取数据的查询没有用到什么索引
+2. ``SELECT count(*) FROM buy_log WHERE buy_date＞='2011-01-01'AND buy_date＜'2011-02-01'`` 则用到了(userid,buy_date)这个联合索引，这里就涉及到下面的覆盖索引概念了。这里之索引会用到这个索引，一是因为不获取数据，而是buy_date在这个索引中是已经排好序的了
+
+#### 6.1.4 覆盖索引
+
+覆盖索引即从辅助索引中就能得到需要查询的数据，而不需要通过聚集索引获取数据。因为辅助索引不包含所有的数据，所以通过辅助索引获取数据就可以减小IO操作，加快数据读取的速度。
+
+还是上面的表结构，下面的语句都可以用到(userid,buy_date)这个联合索引
+
+1. ``SELECT userid FROM buy_log WHERE buy_date＞='2011-01-01'AND buy_date＜'2011-02-01'``
+2. ``SELECT userid,buy_date FROM buy_log WHERE buy_date＞='2011-01-01'AND buy_date＜'2011-02-01'``
+3. ``SELECT buy_date FROM buy_log WHERE buy_date＞='2011-01-01'AND buy_date＜'2011-02-01'``
+
+因为要获取的这些数据在联合索引中都有，不需要通过聚集索引获取。
+
+
+
 
