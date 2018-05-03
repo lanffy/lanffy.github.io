@@ -9,6 +9,10 @@ author_name: R_Lanffy
 
 在项目中有一个功能需要在浏览器页面中浏览服务器的目录。服务器使用Nginx，而Nginx提供了相应的[ngx_http_autoindex_module](http://nginx.org/en/docs/http/ngx_http_autoindex_module.html) 模块，该模块提供了我们想要的功能。
 
+## Nginx-Fancyindex-Theme
+
+这是从一个项目Fork过来，做了部分改动，并修复了少量bug后的完整的可用项目，需要的可以参考：[Nginx-Fancyindex-Theme](https://github.com/lanffy/Nginx-Fancyindex-Theme)
+
 ## Nginx ngx_http_autoindex_module 模块
 
 该模块有以下几个命令：
@@ -142,5 +146,6 @@ configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module --with-pcr
 
 1. [配置 Nginx 的目录浏览功能](http://www.swiftyper.com/2016/12/08/nginx-autoindex-configuration/)
 2. [Nginx-Fancyindex-Theme](http://perso.crans.org/besson/publis/Nginx-Fancyindex-Theme/?C=S;O=D)
+3. [我的Nginx-Fancyindex-Theme](https://github.com/lanffy/Nginx-Fancyindex-Theme)
 
 
