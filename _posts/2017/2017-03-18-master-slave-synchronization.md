@@ -29,10 +29,6 @@ author_name: R_Lanffy
 Mysql同步原理图:
 ![mysql_master_slave_copy](http://maspris.xiaolifeidao.cc/github_blog_mysql_master_slave_copy.png)
 
-![github_blog_mysql_master_slave_copy](/images/posts/2017/github_blog_mysql_master_slave_copy.png)
-
-
-
 第一步是在主库上记录二进制日志,每次在数据变更事务提交前,主库将数据更新的时间记录到二进制日志中。注意这里的顺序,是先记录日志,才提交事务的。所以这里还是会对性能上有所消耗的。
 
 下一步,从库启动一个I/O线程,与主库建立连接,然后在主库上启动一个二进制转储(binlog dump)线程,binlog dump线程会读取主库上的二进制日志中的事件,从库的I/O线程会将接收到的事件记录到自己的Relay Log中。
