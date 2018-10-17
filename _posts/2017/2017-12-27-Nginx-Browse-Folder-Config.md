@@ -39,7 +39,7 @@ autoindex_localtime|off|on、off：是否以服务器的文件时间作为显示
 
 页面展示如下：
 
-![download](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143446285602.jpg-Lanffy)
+![download](http://maspris.xiaolifeidao.cc/2017-12-27-15143446285602.jpg-Lanffy)
 
 可以看到页面中的展示信息和配置想要的一致，但还有个问题是中文文件名显示的时候乱码。
 
@@ -62,11 +62,11 @@ autoindex_localtime|off|on、off：是否以服务器的文件时间作为显示
     }
 
 页面展示如下：
-![中文文件名展示](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143450579285.jpg-Lanffy)
+![中文文件名展示](http://maspris.xiaolifeidao.cc/2017-12-27-15143450579285.jpg-Lanffy)
 
 文件列表的第一行是一个目录，点进去，展示如下：
 
-![页面样式](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143452003924.jpg-Lanffy)
+![页面样式](http://maspris.xiaolifeidao.cc/2017-12-27-15143452003924.jpg-Lanffy)
 
 稍微有一点审美的同学是不是觉得这样展示不太美观呢？是的，很不美观，感觉乱糟糟的。下面就来解决这个问题。
 
@@ -77,11 +77,11 @@ autoindex_localtime|off|on、off：是否以服务器的文件时间作为显示
 ### 查看Nginx当前编译了哪些模块
 
 要查看Nginx编译了哪些模块，执行以下命令：``2>&1 nginx -V | tr ' '  '\n'|grep module``，如下：
-![nginx module](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143466864070.jpg-Lanffy)
+![nginx module](http://maspris.xiaolifeidao.cc/2017-12-27-15143466864070.jpg-Lanffy)
 
 查看完整的编译参数：``nginx -V``，如下：
 
-![nginx config](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143467656141.jpg)
+![nginx config](http://maspris.xiaolifeidao.cc/2017-12-27-15143467656141.jpg)
 
 内容如下：
 
@@ -134,11 +134,11 @@ configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module --with-pcr
 
 到这一步就完成配置了，最终页面展示如下：
 
-![](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143595456540.jpg-Lanffy)
+![](http://maspris.xiaolifeidao.cc/2017-12-27-15143595456540.jpg-Lanffy)
 
 该主题有两种风格，上面一种是light风格，下面的是dark风格：
 
-![](http://7xjh09.com1.z0.glb.clouddn.com/2017-12-27-15143595999553.jpg-Lanffy)
+![](http://maspris.xiaolifeidao.cc/2017-12-27-15143595999553.jpg-Lanffy)
 
 风格在``/usr/local/nginx/html/Nginx-Fancyindex-Theme/fancyindex.conf;``配置文件中进行修改。
 

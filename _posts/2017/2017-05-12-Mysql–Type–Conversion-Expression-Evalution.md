@@ -42,7 +42,7 @@ mysql> explain select * from convert_test where areacode=0001 and period>='20170
 
 结果如下：
 
-![explain](http://7xjh09.com1.z0.glb.clouddn.com/github_blogexplain.png)
+![explain](http://maspris.xiaolifeidao.cc/github_blogexplain.png)
 
 可以看到，这里是没有用到索引的。
 
@@ -58,7 +58,7 @@ mysql> explain select * from convert_test where areacode='0001' and period>='201
 
 结果如下：
 
-![explain2](http://7xjh09.com1.z0.glb.clouddn.com/github_blogexplain2.png)
+![explain2](http://maspris.xiaolifeidao.cc/github_blogexplain2.png)
 
 可以看到完全命中了idx_areacode_period 这个索引。
 
