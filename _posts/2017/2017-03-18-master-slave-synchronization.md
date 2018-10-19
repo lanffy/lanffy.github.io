@@ -27,7 +27,7 @@ author_name: R_Lanffy
 3. 从库读取Relay Log中的事件,将其重现在数据库中
 
 Mysql同步原理图:
-![mysql_master_slave_copy](http://maspris.xiaolifeidao.cc/github_blog_mysql_master_slave_copy.png)
+![mysql_master_slave_copy](/images/posts/2017/github_blog_mysql_master_slave_copy.png)
 
 第一步是在主库上记录二进制日志,每次在数据变更事务提交前,主库将数据更新的时间记录到二进制日志中。注意这里的顺序,是先记录日志,才提交事务的。所以这里还是会对性能上有所消耗的。
 

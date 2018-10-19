@@ -18,7 +18,7 @@ author_name: R_Lanffy
 1. phpinfo()
 
     从phpinfo的函数中可以查到php编译参数,如下图:
-    ![php_config](http://7xjh09.com1.z0.glb.clouddn.com/github_blog_php_configure.png)
+    ![php_config](/images/posts/2017/github_blog_php_configure.png)
     
 2. php-config 文件
     

@@ -94,7 +94,7 @@ ALTER COLUMN columnName SET DEFAULT 0;
 
 有的时候在更改表字段类型时，会出现以下报错：
 
-![error](http://7xjh09.com1.z0.glb.clouddn.com/postgresqlError.png-Lanffy)
+![error](/images/posts/2017/postgresqlError.png)
 
 这是因为字段字段类型改变前和改变后的默认值不能互相转换，所以在更改字段类型前，需要先更改字段的默认值。
 

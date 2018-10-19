@@ -70,7 +70,7 @@ html5lib|``BeautifulSoup(markup, "html5lib")``|最好的容错性、以浏览器
 ### 抓取标签列表
 
 例如，要抓取[链家小区列表页](http://sh.lianjia.com/xiaoqu/)的区域筛选项，如下图：
-![lianjia1](http://7xjh09.com1.z0.glb.clouddn.com/lianjia1.png)
+![lianjia1](/images/posts/2017/lianjia1.png)
 
 代码如下：
 
@@ -96,7 +96,7 @@ for dl in dllist:
 ### 抓取单个标签
 
 例如，要抓取[链家小区列表页](http://sh.lianjia.com/xiaoqu/)的小区个数，如下图：
-![lianjia_comm_num](http://7xjh09.com1.z0.glb.clouddn.com/lianjia_comm_num.png)
+![lianjia_comm_num](/images/posts/2017/lianjia_comm_num.png)
 
 代码如下：
 
@@ -120,7 +120,7 @@ print(p_community_count)
 ### 根据正则匹配抓取标签
 
 例如，要抓取[链家小区列表页](http://sh.lianjia.com/xiaoqu/)的小区名称，如下图：
-![lianjia_comm_names](http://7xjh09.com1.z0.glb.clouddn.com/lianjia_comm_names.png)
+![lianjia_comm_names](/images/posts/2017/lianjia_comm_names.png)
 
 代码如下：
 
