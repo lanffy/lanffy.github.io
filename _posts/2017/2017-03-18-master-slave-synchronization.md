@@ -75,3 +75,13 @@ UPDATE TABLE_NAME SET COLUMN_NAME = 0;
 
 比较来看,没有哪种模式对所有的情况都是完美的。Mysql能够在这两种模式之间动态切换,默认情况下用的是基于语句的复制方式。但如果发现有语句无法被正确的复制,就切换到基于行的复制模式。
 
+
+```sql
+-- wms_failed_jobs 只保留过去一个月的失败消息
+select id from wms_failed_jobs where failed_at<='2018-05-01 00:00:01' order by id desc limit 1;
+delete from wms_failed_jobs where id<=这里是上面查到的id;
+-- 索引、数据整理
+OPTIMIZE TABLE wms_failed_jobs;
+```
+
+
