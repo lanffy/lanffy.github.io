@@ -22,10 +22,10 @@ syntax_highlighter: rouge
 #  coderay_line_numbers:  nil
 
 # White-listed plugins
-gems:
+plugins:
   - jekyll-sitemap
 
 production_url: https://lanffy.github.io
 github_url: https://github.com/lanffy
 weibo_url: http://weibo.com/raoliang
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
