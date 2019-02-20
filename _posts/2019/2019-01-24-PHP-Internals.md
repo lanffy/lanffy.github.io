@@ -41,3 +41,46 @@ PHP的FPM实现了FastCGI协议。一个完整的FPM响应一个请求的时序�
 
 ![TCP上客户-服务器事务的时序](/images/posts/2019/15505557841498.jpg)图片来自：[深入理解PHP内核](http://www.php-internals.com/book/?p=chapt02/02-02-03-fastcgi)
 
+### PHP程序的执行
+
+![PHP程序的执行过程](/images/posts/2019/15506482368568.jpg)
+
+* 词法解析Re2c：[http://re2c.org/](http://re2c.org/)
+* 词法分析Lemon:[http://www.sqlite.org/src/doc/trunk/doc/lemon.html](http://www.sqlite.org/src/doc/trunk/doc/lemon.html)
+* Yacc 与Lex 快速入门：[http://www.ibm.com/developerworks/cn/linux/sdk/lex/index.html](http://www.ibm.com/developerworks/cn/linux/sdk/lex/index.htmlt)
+
+## PHP变量及其类型
+
+变量存储结构： ``Zend/zend_types.h：_zval_struct``
+
+```c
+struct _zval_struct {
+	zend_value        value;			/* value */
+	union {
+		struct {
+			ZEND_ENDIAN_LOHI_3(
+				zend_uchar    type,			/* active type */
+				zend_uchar    type_flags,
+				union {
+					uint16_t  call_info;    /* call info for EX(This) */
+					uint16_t  extra;        /* not further specified */
+				} u)
+		} v;
+		uint32_t type_info;
+	} u1;
+	union {
+		uint32_t     next;                 /* hash collision chain */
+		uint32_t     cache_slot;           /* cache slot (for RECV_INIT) */
+		uint32_t     opline_num;           /* opline number (for FAST_CALL) */
+		uint32_t     lineno;               /* line number (for ast nodes) */
+		uint32_t     num_args;             /* arguments number for EX(This) */
+		uint32_t     fe_pos;               /* foreach position */
+		uint32_t     fe_iter_idx;          /* foreach iterator index */
+		uint32_t     access_flags;         /* class constant access flags */
+		uint32_t     property_guard;       /* single property guard */
+		uint32_t     constant_flags;       /* constant flags */
+		uint32_t     extra;                /* not further specified */
+	} u2;
+};
+```
+
