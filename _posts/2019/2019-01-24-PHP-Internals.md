@@ -41,6 +41,8 @@ PHP的FPM实现了FastCGI协议。一个完整的FPM响应一个请求的时序�
 
 ![TCP上客户-服务器事务的时序](/images/posts/2019/15505557841498.jpg)图片来自：[深入理解PHP内核](http://www.php-internals.com/book/?p=chapt02/02-02-03-fastcgi)
 
+PHP源码中，FASTCGI的实现：``main/fastcgi.c``
+
 ### PHP程序的执行
 
 ![PHP程序的执行过程](/images/posts/2019/15506482368568.jpg)
