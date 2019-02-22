@@ -52,7 +52,7 @@ PHP源码中，FASTCGI的实现：``main/fastcgi.c``
 
 * 词法解析Re2c：[http://re2c.org/](http://re2c.org/)
 * 词法分析Lemon:[http://www.sqlite.org/src/doc/trunk/doc/lemon.html](http://www.sqlite.org/src/doc/trunk/doc/lemon.html)
-* Yacc 与Lex 快速入门：[http://www.ibm.com/developerworks/cn/linux/sdk/lex/index.html](http://www.ibm.com/developerworks/cn/linux/sdk/lex/index.htmlt)
+* Yacc 与Lex 快速入门：[http://www.ibm.com/developerworks/cn/linux/sdk/lex/index.html](http://www.ibm.com/developerworks/cn/linux/sdk/lex/index.htmlt) 这篇文章很有意思，初步介绍了语言的语义解析和语法解析
 
 ## PHP变量及其类型
 
