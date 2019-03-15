@@ -3,27 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="baidu-site-verification" content="BqtUz0dyiV" />
     <title>
-        {{ page.title }} - 一个风向的Blog
+        {{ page.title }} - 技术博客的生活日常
     </title>
     <link rel="stylesheet" href="/css/site.css">
     <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <link rel="alternate" type="application/atom+xml" title="RSS Feed for Lanffy's blog" href="/feed.xml"/>
-    <meta name="description" content="{{page.title}}"/>
-    <meta name="keywords" content="{{page.title}}"/>
+    <meta name="description" content="{{page.title}}-一个慵懒的技术博主的分享，记录其日常所思所想所得。"/>
+    <meta name="keywords" content="{{page.title}},技术博客,技术分享,日常记录"/>
     <link rel="canonical" href="{{site.production_url}}{{ page.url }}">
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            //hm.src = "https://hm.baidu.com/hm.js?6d2f15310a43346476d21e3ad87f5f3a";
-            hm.src = "https://hm.baidu.com/hm.js?209840da4c0db6b2be4f8fb2a89fbe07";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
     <!-- Global site tag (gtag.js) - Google Analytics start -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111859482-1"></script>
     <script>
@@ -36,8 +25,6 @@
         gtag('js', new Date());
         gtag('config', 'UA-111859482-1');
     </script>
-    <!-- Global site tag (gtag.js) - Google Analytics end -->
-
 </head>
 
 <body>
@@ -47,12 +34,11 @@
             <a class="{% if page.category == 'blog' %} selected {% endif %}" href="/articles">文章</a>
             <a class="{% if page.category == 'categories' %} selected {% endif %}" href="/categories/">分类</a>
             <a class="{% if page.category == 'about-zh' %} selected {% endif %}" href="/about/">关于</a>
-            <!--<a href="{{ site.github_url }}">Github</a>-->
         </nav>
         <div class="pull-right right logo">
-
-            <a href="{{ site.production_url }}/"><img class="avatar" src="/images/lanffy.png"
-                                                      alt="My profile picture"/></a>
+            <a href="{{ site.production_url }}/">
+                <img class="avatar" src="/images/lanffy.png" alt="My profile picture"/>
+            </a>
         </div>
         <div class="clear"></div>
     </header>
@@ -60,6 +46,7 @@
 </div>
 
 {{ content }}
+
 <div class="separator"></div>
 
 <div style="border-bottom: 1px solid #eee"></div>
@@ -69,16 +56,8 @@
         Hosted on <a href="https://github.com/lanffy/lanffy.github.io" target="_blank">Github Pages</a>,
         Inspired by <a href="http://sebastien.saunier.me/" target="_blank">Saunier</a>.
     </p>
-    <!--<p>-->
-    <!--<a href="http://www.easycounter.com/"><img src="http://www.easycounter.com/counter.php?willard" border="0"-->
-    <!--alt="Website Hit Counter"></a> since August 2013.-->
-    <!--</p>
-    <ul class="links">
-        <li><a href="/feed.xml" title="Subscribe to my blog with RSS"><i class="icon-feed"></i></a></li>
-    </ul>-->
 </footer>
 
 <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-
 </body>
 </html>
