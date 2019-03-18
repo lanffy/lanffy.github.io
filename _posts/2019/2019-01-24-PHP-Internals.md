@@ -89,3 +89,18 @@ struct _zval_struct {
 };
 ```
 
+## PHP内存管理
+
+在说PHP内存管理之前，先了解一下操作系统是如何管理内存的。通常情况下，计算机中通过[内存管理单元(MMU)](http://zh.wikipedia.org/wiki/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83)来处理CPU对内存的访问。非系统的应用程序在有需要访问内存的时候，通过库函数malloc向操作系统申请内存。普通的应用发起内存访问，会涉及到CPU在用户态和内核态之间的转换，这个转换的成本很大。所以大多数的应用在启动的时候会向操作系统多申请一部分内存备用，我们常见的Java中的JVM和PHP中的Zend引擎就是这样做的。
+
+在PHP中，在全局配置文件``php.ini``中通过 ``memory_limit=32M`` 来设置启动内存。也可以通过下面的方式在运行时设置启动内存：
+
+```php
+<?php
+ini_set('memory_limit', '100M');
+```
+
+同时，PHP还提供了内存暂用情况的查看函数：
+
+1. [memory_get_usage()](http://www.php.net/manual/en/function.memory-get-usage.php)：获取 目前PHP脚本所用的内存大小
+2. [memory_get_peak_usage()](http://www.php.net/manual/en/function.memory-get-peak-usage.php)：当前脚本到目前为止所占用的内存峰值
