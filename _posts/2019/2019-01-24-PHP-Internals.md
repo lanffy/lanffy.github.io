@@ -104,3 +104,6 @@ ini_set('memory_limit', '100M');
 
 1. [memory_get_usage()](http://www.php.net/manual/en/function.memory-get-usage.php)：获取 目前PHP脚本所用的内存大小
 2. [memory_get_peak_usage()](http://www.php.net/manual/en/function.memory-get-peak-usage.php)：当前脚本到目前为止所占用的内存峰值
+
+PHP内存管理器如下：
+![PHP内存管理器](/images/posts/2019/PHP_cache.jpeg)
