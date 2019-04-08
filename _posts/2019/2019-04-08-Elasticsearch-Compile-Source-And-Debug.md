@@ -19,9 +19,11 @@ Elastisearch 6.7.0编译需要JDK版本10.0及以上，我直接安装了JDK12.J
 
 ### Elastisearch源码
 
-> git clone https://github.com/elastic/elasticsearch.git
-> git tag
-> git checkout v6.7.0
+```
+git clone https://github.com/elastic/elasticsearch.git
+git tag
+git checkout v6.7.0
+```
 
 ## 使用IDEA DEBUG 源码
 
