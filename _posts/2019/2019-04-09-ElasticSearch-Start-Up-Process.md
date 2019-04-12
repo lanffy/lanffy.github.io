@@ -371,7 +371,9 @@ Node 实例化对象过程如下：
 11. **modules.createInjector();**：加载其他所有剩余模块并注入模块管理器中
 12. **clusterModule.getAllocationService().setGatewayAllocator(injector.getInstance(GatewayAllocator.class));**：加载网关模块
 
+
 ##### 1.1.1、**new PluginsService** 如何加载模块和插件
+
 
 在**new PluginsService**中有代码：**Set<Bundle> modules = getModuleBundles(modulesDirectory);**，用来加载模块和插件，跟进代码来到**org.elasticsearch.plugins.PluginsService#readPluginBundle**方法如下：
 
@@ -506,7 +508,9 @@ Node 实例化对象过程如下：
 
 这是两个配置模板，每个插件和模块都会按照**plugin-descriptor.properties**中的模板读取响应的配置：name、description、version、elasticsearch.version、java.version、classname、has.native.controller、require.keystore。用这些配置，最终封装成一个**PluginInfo**对象。最终返回给PluginsService的数据结构如下：``Set<Bundle(PluginInfo, path)>``
 
+
 ##### 1.1.2、**new ThreadPool()**：创建模块和插件的线程池
+
 
 ES的线程池类型：
 
@@ -581,7 +585,9 @@ ES的线程池类型：
 
 参考[官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html)可以查看各个线程池的作用，线程池类型，线程数量，等待队列数量等。
 
+
 #### 2、 **INSTANCE.start();** 启动Node实例
+
 
 在**Bootstrap.init**中调用该方法。
 
