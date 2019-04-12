@@ -639,3 +639,5 @@ Node 的启动步骤，大概做了这些事情：
 ## 总结
 
 从上面的步骤可以看出Elasticsearch的单节点启动过程还是很复杂的，而且文章只是列出了大概的启动步骤，还有很多细节没有深挖，比如节点和集群的相互发现与加入，节点间的数据同步，集群master是如何选举的等。细节还需各位读者深读源码。
+
+参考：[http://laijianfeng.org/2018/09/Elasticsearch-6-3-2-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/](http://laijianfeng.org/2018/09/Elasticsearch-6-3-2-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/)
