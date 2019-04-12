@@ -275,7 +275,9 @@ setup方法如下：
 6. **IfConfig.logIfNecessary();**：Debug模式，打印IfConfig信息
 7. **Security.configure()**:加载SecurityManager，权限验证
 8. **new Node(environment)**：根据运行环境，创建Node对象
+
 <br />
+
 #### 1.1、**new Node(environment)** 创建Node对象
 
 Node的创建过程很复杂，这里只大概说一下里面做了哪些事情，详细的过程还需读者细度源码。其部分代码如下：
