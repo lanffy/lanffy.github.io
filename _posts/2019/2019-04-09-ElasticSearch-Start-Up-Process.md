@@ -29,6 +29,11 @@ author_name: R_Lanffy
 1. **org.elasticsearch.bootstrap.Elasticsearch#main(java.lang.String[])** 解析命令参数，加载配置，权限验证
 2. **org.elasticsearch.bootstrap.Bootstrap** 初始化，资源检查
 3. **org.elasticsearch.node.Node** 启动单机节点，创建keepAlive线程
+    1. 为创建Node对象做准备，并最终创建Node对象
+        1. 创建Node对象
+            1. 如何加载模块和插件
+            2. 创建模块和插件的线程池
+    2. 启动Node实例
 
 ### 一、**org.elasticsearch.bootstrap.Elasticsearch#main(java.lang.String[])**解析命令参数，加载配置，权限验证
 
@@ -634,4 +639,3 @@ Node 的启动步骤，大概做了这些事情：
 ## 总结
 
 从上面的步骤可以看出Elasticsearch的单节点启动过程还是很复杂的，而且文章只是列出了大概的启动步骤，还有很多细节没有深挖，比如节点和集群的相互发现与加入，节点间的数据同步，集群master是如何选举的等。细节还需各位读者深读源码。
-
