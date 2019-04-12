@@ -371,6 +371,7 @@ Node 实例化对象过程如下：
 11. **modules.createInjector();**：加载其他所有剩余模块并注入模块管理器中
 12. **clusterModule.getAllocationService().setGatewayAllocator(injector.getInstance(GatewayAllocator.class));**：加载网关模块
 
+<br />
 
 ##### 1.1.1、**new PluginsService** 如何加载模块和插件
 
