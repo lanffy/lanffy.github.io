@@ -8,7 +8,7 @@ author_name: R_Lanffy
 ---
 
 ## 环境准备
-
+说明：本文章使用的ES版本是：6.7.0
 ### JDK
 
 Elastisearch 6.7.0编译需要JDK版本10.0及以上，我直接安装了JDK12.JDK下载地址：[https://www.oracle.com/technetwork/java/javase/downloads/index.html](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
