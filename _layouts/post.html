@@ -49,6 +49,27 @@ layout: default
         </div>
     </article>
 
+    <div class="inner">
+        <div class="article_copyright">
+            <p><span>文章标题:</span>{{ page.title }}</p>
+            <p><span>文章字数:</span><span class="post-count">{{page.content | size |divided_by:2}}</span></p>
+            <p><span class="fa fa-calendar">发布时间:</span>{{ page.date | date: "%Y" }}年{{ page.date | date: "%m" }}月{{
+                page.date | date: "%d" }}日</p>
+            <p>
+                <span>原始链接:</span>
+                <a class="post-url" href="{{site.production_url}}{{ page.url }}" title="{{ page.title }}">
+                    {{site.production_url}}{{ page.url }}
+                </a>
+            </p>
+            <p>
+                <span>版权声明:</span>
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+                   title="CC BY-NC-SA 4.0 International"
+                   target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            </p>
+        </div>
+    </div>
+
     <!--翻页功能-->
     <section class="inner">
         <ul class="pager">
@@ -70,10 +91,12 @@ layout: default
         <!-- 来必力City版安装代码 -->
         <div id="lv-container" data-id="city" data-uid="MTAyMC80MjczNi8xOTI4Mw==">
             <script type="text/javascript">
-                (function(d, s) {
+                (function (d, s) {
                     var j, e = d.getElementsByTagName(s)[0];
 
-                    if (typeof LivereTower === 'function') { return; }
+                    if (typeof LivereTower === 'function') {
+                        return;
+                    }
 
                     j = d.createElement(s);
                     j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
