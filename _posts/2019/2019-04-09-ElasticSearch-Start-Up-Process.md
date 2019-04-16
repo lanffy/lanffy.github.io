@@ -375,6 +375,14 @@ Node 实例化对象过程如下：
 10. **new MetaDataCreateIndexService()**：创建索引服务
 11. **modules.createInjector();**：加载其他所有剩余模块并注入模块管理器中
 12. **clusterModule.getAllocationService().setGatewayAllocator(injector.getInstance(GatewayAllocator.class));**：加载网关模块
+13. 如果启动了http配置，则加载rest中的所有ActionHandler，用于处理各种http请求，代码如下：
+
+    ```java
+    if (NetworkModule.HTTP_ENABLED.get(settings)) {
+        logger.debug("initializing HTTP handlers ...");
+        actionModule.initRestHandlers(() -> clusterService.state().nodes());
+    }
+    ```
 
 <br />
 
