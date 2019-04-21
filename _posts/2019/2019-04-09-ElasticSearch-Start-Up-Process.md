@@ -619,20 +619,24 @@ ES的线程池类型：
 Node 的启动步骤，大概做了这些事情：
 
 1. 启动各种服务：
-    * IndicesService：索引管理
-    * IndicesClusterStateService：跨集群同步
-    * SnapshotsService：负责创建快照
-    * SnapshotShardsService：此服务在数据和主节点上运行，并控制这些节点上当前快照的分片。 它负责启动和停止分片级别快照
-    * RoutingService：侦听集群状态，当它收到ClusterChangedEvent（集群改变事件）将验证集群状态，路由表可能会更新
-    * SearchService：搜索服务
-    * ClusterService：集群管理
-    * NodeConnectionsService：此组件负责在节点添加到群集状态后连接到节点，并在删除它们时断开连接。 此外，它会定期检查所有连接是否仍处于打开状态，并在需要时还原它们。 请注意，如果节点断开/不响应ping，则此组件不负责从群集中删除节点。 这是由NodesFaultDetection完成的。 主故障检测由链接MasterFaultDetection完成。
-    * ResourceWatcherService：通用资源观察器服务
-    * GatewayService：网关服务
-    * Discovery：节点发现？
-    * TransportService：节点间数据同步网络服务
-    * TaskResultsService：
-    * HttpServerTransport：外部网络服务
+
+    服务名|简介
+    ---|---
+    IndicesService | 索引管理
+    IndicesClusterStateService | 跨集群同步
+    SnapshotsService | 负责创建快照
+    SnapshotShardsService | 此服务在数据和主节点上运行，并控制这些节点上当前快照的分片。 它负责启动和停止分片级别快照
+    RoutingService | 侦听集群状态，当它收到ClusterChangedEvent（集群改变事件）将验证集群状态，路由表可能会更新
+    SearchService | 搜索服务
+    ClusterService | 集群管理
+    NodeConnectionsService | 此组件负责在节点添加到群集状态后连接到节点，并在删除它们时断开连接。 此外，它会定期检查所有连接是否仍处于打开状态，并在需要时还原它们。 请注意，如果节点断开/不响应ping，则此组件不负责从群集中删除节点。 这是由NodesFaultDetection完成的。 主故障检测由链接MasterFaultDetection完成。
+    ResourceWatcherService | 通用资源观察器服务
+    GatewayService | 网关服务
+    Discovery | 节点发现？
+    TransportService | 节点间数据同步网络服务
+    TaskResultsService | 
+    HttpServerTransport | 外部网络服务
+
 2. 将node连接服务（NodeConnectionsService）绑定到集群服务上（ClusterService）
 3. TransportService启动后，验证节点，验证通过后，改服务用于node间的数据同步提供网络支持
 4. 开启线程，去探测发现是否有集群，有则加入集群，这里也会启动一个CountDownLatch进行等待，直到集群选举出master
