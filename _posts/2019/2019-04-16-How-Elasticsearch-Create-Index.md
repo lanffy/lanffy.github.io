@@ -47,3 +47,5 @@ author_name: R_Lanffy
 ![](media/15554016904328.jpg)
 
 说明：ES 6.x 版本中，相同索引只允许一个type，不再支持多个type。7.x版本中，type将废弃。
+
+
