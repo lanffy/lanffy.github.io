@@ -14,7 +14,7 @@ author_name: R_Lanffy
 由此可知，在ES启动过程中，创建Node对象（new Node(environment)）时，初始化了RestHandler，由其名字可以知道这是用来处理Rest请求的。
 
 在ES源码中，RestHandlerAction如下图：
-![](media/15553976546886.jpg)
+![](/images/posts/2019/15553976546886.jpg)
 
 其中：
 
@@ -44,21 +44,21 @@ shard|分片||将索引分为多个块，每块叫做一个分片。索引定义
 replicas|分片的备份||每个分片默认一个备份分片，它可以提升节点的可用性，同时能够提升搜索时的并发性能（搜索可以在全部分片上并行执行）
 
 一个ES集群的结构如下：
-![](media/15554009231695.jpg)
+![](/images/posts/2019/15554009231695.jpg)
 
 每个节点默认有5个分片，每个分片有一个备分片。
 
 6.x版本之前的索引的内部结构：
-![](media/15554016904328.jpg)
+![](/images/posts/2019/15554016904328.jpg)
 
 说明：ES 6.x 版本中，相同索引只允许一个type，不再支持多个type。7.x版本中，type将废弃。
 
 所以，6.x版本的索引结构如下：
 
-![](media/15558305452333.jpg)
+![](/images/posts/2019/15558305452333.jpg)
 
 7.x版本的索引结构如下：
-![](media/15558305708268.jpg)
+![](/images/posts/2019/15558305708268.jpg)
 
 ## 索引一个文档
 
@@ -147,7 +147,7 @@ Transport将request封装成Task
 
 1. 服务端根据actionName获取具体响应请求的action，此处为执行：TransportBulkAction#doExecute()
 2. 读取AutoCreateIndex#AUTO_CREATE_INDEX_SETTING，该值由配置文件``elasticsearch.yml``中的``auto_create_index``控制，true表示当插入的索引不存在时，自动创建该索引
-    ![](media/15564544674577.jpg)
+    ![](/images/posts/2019/15564544674577.jpg)
     1. 如果"auto_create_index"为true：
         1. 分析bulkRequest中的所有请求中的所有index，生成Set<String> indices，
         2. 然后遍历indices，判断索引名称是否存在
@@ -181,7 +181,7 @@ Transport将request封装成Task
 2. 遍历request中的文档
     1. 获取文档操作类型OpType，写入文档
     2. 对文档做一些加工，主要包括：解析routing(如果mapping里有的话)、指定的timestamp(如果没有带timestamp会使用当前时间)，如果文档没有指定id字段，会自动生成一个base64UUID作为id字段
-        ![](media/15565090160152.jpg)
+        ![](/images/posts/2019/15565090160152.jpg)
 3. 再次遍历所有的request，获取获取每个request应该发送到的shardId，获取的过程是这样的：如果上一步获取到了routing则取routing，否则取文档ID，取其hash值（哈希算法 Murmur3Hash）然后对当前索引的分片数量取模，得到分片ID：shardId
 4. 将相同分片的请求分组，将请求封装成BulkShardRequest，通过TransportBulkAction将请求发送到分片所在节点
 5. 请求转发到Node节点更新主分片，TransportReplicationAction.execute(),创建一个ReroutePhase异步线程，并执行，此处文档会写入主分片buffer中（InternalEngine#indexIntoLucene），最后并启动异步进程ReplicationPhase，更新副分片
