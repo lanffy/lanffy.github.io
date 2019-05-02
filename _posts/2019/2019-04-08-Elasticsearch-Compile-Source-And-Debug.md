@@ -2,13 +2,13 @@
 layout: post
 title: "搜索引擎ElasticSearch源码编译和Debug环境搭建"
 categories: [编程语言]
-tags: [Java]
+tags: [Java,搜索引擎]
 author_name: R_Lanffy
 ---
 ---
 
 ## 环境准备
-说明：本文章使用的ES版本是：6.7.0
+说明：本文章使用的ES版本是：``6.7.0``
 ### JDK
 
 Elastisearch 6.7.0编译需要JDK版本10.0及以上，我直接安装了JDK12.JDK下载地址：[https://www.oracle.com/technetwork/java/javase/downloads/index.html](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -86,4 +86,8 @@ git checkout v6.7.0
 下一篇文章将说一下ES的启动过程。
 
 
+## 系列文章
 
+1. [搜索引擎ElasticSearch源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
+2. [搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
+3. [Elasticsearch如何创建索引?](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)

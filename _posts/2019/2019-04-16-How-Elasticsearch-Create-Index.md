@@ -2,14 +2,16 @@
 layout: post
 title: "Elasticsearch如何创建索引?"
 categories: [编程语言]
-tags: [Java]
+tags: [Java,搜索引擎]
 author_name: R_Lanffy
 ---
 ---
 
 ## 前言
 
-在上一篇文章[搜索引擎ElasticSearch的启动过程](http://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)中，介绍了ES的启动过程。
+说明：本文章使用的ES版本是：``6.7.0``
+
+在上一篇文章[搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)中，介绍了ES的启动过程。
 
 由此可知，在ES启动过程中，创建Node对象（new Node(environment)）时，初始化了RestHandler，由其名字可以知道这是用来处理Rest请求的。
 
@@ -65,7 +67,7 @@ replicas|分片的备份||每个分片默认一个备份分片，它可以提升
 启动ES实例后，发送如下请求：
 
 ```json
-curl -X PUT 'localhost:9200/indexName/typeName/1' -H 'Content-Type: application/json' -d '
+curl -X PUT 'localhost:9200/index_name/type_name/1' -H 'Content-Type: application/json' -d '
 {
   "title": "我是文件标题，可被搜索到",
   "text":  "文本内容，ES时如何索引一个文档的",
@@ -75,8 +77,9 @@ curl -X PUT 'localhost:9200/indexName/typeName/1' -H 'Content-Type: application/
 
 其中:
 
-* test:表示索引名称
-* 1：索引ID
+* index_name:表示索引名称
+* type_name:类别名称
+* 1：文档ID
 
 ### ES执行流程：
 
@@ -127,7 +130,7 @@ curl -X PUT 'localhost:9200/indexName/typeName/1' -H 'Content-Type: application/
     16 = "human"
     17 = "filter_path"
     ```
-2. NodeClient#doExecute：指定执行改请求的actionName：``indices:data/write/index``
+2. NodeClient#doExecute：指定执行该请求的actionName：``indices:data/write/index``
 3. TransportAction#execute()：将请求封装成CreateIndexRequest并发送到服务端，处理发送前置任务
     1. IndexRequest#validate：校验参数内容，type、source、contentType
     2. 这里如果是更新或者删除操作，检查是否传入ID字段，没传如则报错
@@ -141,7 +144,7 @@ curl -X PUT 'localhost:9200/indexName/typeName/1' -H 'Content-Type: application/
 
 #### Transport层
 
-Transport将request封装成Task
+Transport将request封装成Task，将请求发送给服务端
 
 #### 服务端
 
@@ -186,3 +189,9 @@ Transport将request封装成Task
 4. 将相同分片的请求分组，将请求封装成BulkShardRequest，通过TransportBulkAction将请求发送到分片所在节点
 5. 请求转发到Node节点更新主分片，TransportReplicationAction.execute(),创建一个ReroutePhase异步线程，并执行，此处文档会写入主分片buffer中（InternalEngine#indexIntoLucene），最后并启动异步进程ReplicationPhase，更新副分片
 6. 至此，文档写入完成，但只是将数据写入内存buffer和transLog中，之后还有异步进程将数据refresh到索引中使其可搜索，将数据flush到磁盘
+
+## 系列文章
+
+1. [搜索引擎ElasticSearch源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
+2. [搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
+3. [Elasticsearch如何创建索引?](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)

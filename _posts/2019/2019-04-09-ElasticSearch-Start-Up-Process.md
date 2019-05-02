@@ -2,18 +2,18 @@
 layout: post
 title: "搜索引擎ElasticSearch的启动过程"
 categories: [编程语言]
-tags: [Java]
+tags: [Java,搜索引擎]
 author_name: R_Lanffy
 ---
 ---
 
-[上一篇文章](http://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)说了ES的源码编译以及如何在本地编译。这一篇文章主要说明ES的启动过程。
+[上一篇文章](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)说了ES的源码编译以及如何在本地编译。这一篇文章主要说明ES的启动过程。
 
 ## 环境准备
 
 参考[ElasticSearch源码编译和Debug](http://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)。
 
-说明：本文章使用的ES版本是：6.7.0
+说明：本文章使用的ES版本是：``6.7.0``
 
 启动函数：**org.elasticsearch.bootstrap.ElasticSearch**
 
@@ -653,3 +653,9 @@ Node 的启动步骤，大概做了这些事情：
 从上面的步骤可以看出Elasticsearch的单节点启动过程还是很复杂的，而且文章只是列出了大概的启动步骤，还有很多细节没有深挖，比如节点和集群的相互发现与加入，节点间的数据同步，集群master是如何选举的等。细节还需各位读者深读源码。
 
 参考：[http://laijianfeng.org/2018/09/Elasticsearch-6-3-2-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/](http://laijianfeng.org/2018/09/Elasticsearch-6-3-2-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/)
+
+## 系列文章
+
+1. [搜索引擎ElasticSearch源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
+2. [搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
+3. [Elasticsearch如何创建索引?](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)
