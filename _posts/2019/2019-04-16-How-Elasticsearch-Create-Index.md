@@ -71,7 +71,7 @@ curl -X PUT 'localhost:9200/index_name/type_name/1' -H 'Content-Type: applicatio
 {
   "title": "我是文件标题，可被搜索到",
   "text":  "文本内容，ES时如何索引一个文档的",
-  "date":  "2014/01/01"
+  "date":  "2019/01/01"
 }'
 ```
 
