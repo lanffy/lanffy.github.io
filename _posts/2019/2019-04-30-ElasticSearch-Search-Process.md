@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Elasticsearch的搜索过程详解"
+title: "Elasticsearch搜索过程详解"
 categories: [编程语言]
 tags: [Java,搜索引擎]
 author_name: R_Lanffy
@@ -60,7 +60,9 @@ curl -X GET 'localhost:9200/index_name/type_name/_search?pretty&q=title:66' -H '
 2. 构造异步请求Action，将请求转发到各个节点，等待回调
 3. 遍历所有节点，构造节点查询参数ShardSearchTransportRequest对象，对每个节点执行查询操作![-w684](/images/posts/2019/15567816100659.jpg)
 4. 执行查询阶段，首先在cache里面判断是否有缓存，如果有则执行缓存查询；如果cache里面没有，执行QueryPhase类的execute()方法，他调用lucene的searcher.search对索引进行查询，查询成功回调onShardResult方法并返回docIds，查询失败回调onShardFailure（计数失败情况，并尝试在副本分片上进行查询）
-5. Fetch阶段：master接收到各个节点返回的docIds后，发起数据Fetch请求，通过docId和其分片ID到对应分片抓取数据，后合并数据返回给客户端
+5. 查询阶段会计算文档的相关性得分用于排序：![-w682](media/15571297505800.jpg)
+
+6. Fetch阶段：master接收到各个节点返回的docIds后，发起数据Fetch请求，通过docId和其分片ID到对应分片抓取数据，后合并数据返回给客户端
 
 
 大致的查询时序逻辑：
