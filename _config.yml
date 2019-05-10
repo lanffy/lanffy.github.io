@@ -10,11 +10,13 @@ lsi: false
 
 markdown: kramdown
 kramdown:
-    input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
-    extensions:
+  math_engine: mathjax
+  input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
+  extensions:
     - autolink
     - footnotes
     - smart
+
 hard_wrap: false
 #  use_coderay: true
 syntax_highlighter: rouge

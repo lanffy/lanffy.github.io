@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Elasticsearch如何创建索引?"
+title: "Elasticsearch创建索引流程"
 categories: [编程语言]
 tags: [Java,搜索引擎]
 author_name: R_Lanffy
@@ -189,6 +189,11 @@ Transport将request封装成Task，将请求发送给服务端
 4. 将相同分片的请求分组，将请求封装成BulkShardRequest，通过TransportBulkAction将请求发送到分片所在节点
 5. 请求转发到Node节点更新主分片，TransportReplicationAction.execute(),创建一个ReroutePhase异步线程，并执行，此处文档会写入主分片buffer中（InternalEngine#indexIntoLucene），最后并启动异步进程ReplicationPhase，更新副分片
 6. 至此，文档写入完成，但只是将数据写入内存buffer和transLog中，之后还有异步进程将数据refresh到索引中使其可搜索，将数据flush到磁盘
+
+## 文档写入总结
+
+1. 通过副本分片和Translog日志保障数据安全和一致性
+2. 在可用性和一致性两者的取舍中，ES更看重可用性。主分片写入后，即可搜索。因此如果请求落到副分片可能出现不一致的情况，但是在搜索业务中，这种短时间的不一致大多是可以接受的
 
 ## 系列文章
 
