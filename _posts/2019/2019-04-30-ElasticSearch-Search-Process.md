@@ -15,12 +15,6 @@ author_name: R_Lanffy
 
 接下来我们具体的看一下ES中，搜索过程是怎样的
 
-## 系列文章
-
-1. [搜索引擎ElasticSearch源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
-2. [搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
-3. [Elasticsearch如何创建索引?](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)
-
 ## 在ES中搜索
 
 按照前面几篇文章的步骤，我们直接开始debug搜索的过程。[上一篇文章](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)中我们写入了如下的数据
@@ -75,4 +69,11 @@ curl -X GET 'localhost:9200/index_name/type_name/_search?pretty&q=title:66' -H '
 3. 搜索会遍历所有的分片，所以分片的数量影响着搜索的性能，而分片的数量也决定了ES能承载的最大数据量。所以在具体的应用中，需要在二者之间选择平衡
 4. 计算文档权重得分，每搜索一次，都会根据搜索条件重新计算一次，对搜索性能影响很大
 
+## 系列文章
 
+1. [搜索引擎ElasticSearch源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
+2. [搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
+3. [Elasticsearch创建索引流程](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)
+4. [Elasticsearch搜索过程详解](https://lanffy.github.io/2019/04/30/ElasticSearch-Search-Process)
+5. [Elasticsearch搜索相关性排序算法详解](https://lanffy.github.io/2019/05/08/Elasticsearch-Search-Score-Algorithm)
+6. [Elasticsearch中的倒排索引](https://lanffy.github.io/2019/05/10/Inverted-Index-In-Elasticsearch)

@@ -134,6 +134,16 @@ $${\displaystyle {\text{tfNorm}}(t,d)={\frac {f(t, d)\cdot (k_{1}+1)}{f(t, d)+k_
 ES在搜索过程中，拿到文档ID之后，就会根据搜索词，计算每篇文档的相关性得分，用其进行排序。
 
 
+## 系列文章
+
+1. [搜索引擎ElasticSearch源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
+2. [搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
+3. [Elasticsearch创建索引流程](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)
+4. [Elasticsearch搜索过程详解](https://lanffy.github.io/2019/04/30/ElasticSearch-Search-Process)
+5. [Elasticsearch搜索相关性排序算法详解](https://lanffy.github.io/2019/05/08/Elasticsearch-Search-Score-Algorithm)
+6. [Elasticsearch中的倒排索引](https://lanffy.github.io/2019/05/10/Inverted-Index-In-Elasticsearch)
+
+
 > 参考资料：
 
 * [https://lucene.apache.org/core/7_2_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html](https://lucene.apache.org/core/7_2_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)

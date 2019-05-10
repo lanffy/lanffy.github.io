@@ -10,7 +10,7 @@ published: true
 
 ## 前言
 
-再[Elasticsearch创建索引流程](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)一文中，介绍了ES创建索引的流程。再流程中是调用Lucene的接口来创建索引的。本篇文章主要介绍ES中的索引——倒排索引
+在[Elasticsearch创建索引流程](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)一文中，介绍了ES创建索引的流程。再流程中是调用Lucene的接口来创建索引的。本篇文章主要介绍ES中的索引——倒排索引
 
 ## 分词
 
@@ -67,7 +67,7 @@ published: true
 * **倒排列表**
 
 它的结构如下：
-![-w462](media/15574746644761.jpg)
+![-w462](/images/posts/2019/15574746644761.jpg)
 
 ### 单词词典
 单词词典的特性：
@@ -77,7 +77,7 @@ published: true
 3. 其中记录着指向倒排列表的指针
 
 单词词典的实现：
-![-w477](media/15574747649420.jpg)
+![-w477](/images/posts/2019/15574747649420.jpg)
 
 单词词典有两种数据结构实现：**B+树**和**Hash表**
 
@@ -124,4 +124,14 @@ B+树和Mysql索引结构中主键索引数据结构一样，这里就不再介�
 
 ### 倒排索引的搜索过程
 
-![](media/15574751723905.jpg)
+![](/images/posts/2019/15574751723905.jpg)
+
+
+## 系列文章
+
+1. [搜索引擎ElasticSearch源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
+2. [搜索引擎ElasticSearch的启动过程](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
+3. [Elasticsearch创建索引流程](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)
+4. [Elasticsearch搜索过程详解](https://lanffy.github.io/2019/04/30/ElasticSearch-Search-Process)
+5. [Elasticsearch搜索相关性排序算法详解](https://lanffy.github.io/2019/05/08/Elasticsearch-Search-Score-Algorithm)
+6. [Elasticsearch中的倒排索引](https://lanffy.github.io/2019/05/10/Inverted-Index-In-Elasticsearch)
