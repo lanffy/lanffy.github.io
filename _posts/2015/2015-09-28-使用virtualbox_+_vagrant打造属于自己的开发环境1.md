@@ -7,8 +7,6 @@ author_name: R_Lanffy
 ---
 ---
 
-![vagrant](http://sfault-image.b0.upaiyun.com/c1/eb/c1eb8c927b0b255d6de2532ae2564877)
-
 很多新进入公司的小伙伴估计都有这样的经历，刚进公司必定会配置公司产品运行所需的开发环境。
 
 配置环境对于刚入职场的新手来说，还是很有难度的。

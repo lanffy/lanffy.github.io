@@ -7,8 +7,6 @@ author_name: R_Lanffy
 ---
 ---
 
-![vagrant](http://sfault-image.b0.upaiyun.com/c1/eb/c1eb8c927b0b255d6de2532ae2564877)
-
 在[系列文章1](http://lanffy.github.io/2015/09/28/使用virtualbox_+_vagrant打造属于自己的开发环境1)和[系列文章2](http://lanffy.github.io/2015/10/04/使用virtualbox_+_vagrant打造属于自己的开发环境2)文章中,介绍了Vagrant的安装和开发环境软件的自动安装。
 
 这篇文章将写点关于虚拟机中Nginx的配置，以及在真实机中访问Nginx的方法。
