@@ -3,19 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        {{ page.title }} - 技术博客的生活日常
-    </title>
+    <title>{{ page.title }}-技术博客的生活日常</title>
+    <meta name="description" content="{{page.title}}-一个慵懒的技术博主的分享，记录其日常所思所想所得。"/>
+    <meta name="keywords" content="{{page.title}},技术博客,技术分享,日常记录"/>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5QVTBD3');</script>
+    <!-- End Google Tag Manager -->
+
     <link rel="stylesheet" href="/css/site.css">
     <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <link rel="alternate" type="application/atom+xml" title="RSS Feed for Lanffy's blog" href="/feed.xml"/>
-    <meta name="description" content="{{page.title}}-一个慵懒的技术博主的分享，记录其日常所思所想所得。"/>
-    <meta name="keywords" content="{{page.title}},技术博客,技术分享,日常记录"/>
     <link rel="canonical" href="{{site.production_url}}{{ page.url }}">
     <!-- Global site tag (gtag.js) - Google Analytics start -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111859482-1"></script>
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111859482-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -29,6 +35,10 @@
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QVTBD3"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="header-container">
     <header class="inner">
         <nav>
