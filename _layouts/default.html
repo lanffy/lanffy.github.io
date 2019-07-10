@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}-技术博客的生活日常</title>
     <meta name="description" content="{{page.title}}-一个慵懒的技术博主的分享，记录其日常所思所想所得。"/>
-    <meta name="keywords" content="{{page.title}},技术博客,技术分享,日常记录"/>
-    <!-- Google Tag Manager
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5QVTBD3');</script>
-    End Google Tag Manager -->
-
+    <meta name="keywords" content="{{page.title}},{% if page.categories %}{% for c in page.categories %}{{c}},{% endfor %}{% endif %}{% if page.tags %}{% for t in page.tags %}{{t}},{% endfor %}{% endif %}技术博客,技术分享,日常记录"/>
     <link rel="stylesheet" href="/css/site.css">
     <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
