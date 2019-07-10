@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Elasticsearch搜索过程详解"
-categories: [编程语言]
-tags: [Java,搜索引擎]
+categories: [搜索引擎]
+tags: [ElasticSearch]
 author_name: R_Lanffy
 ---
 ---

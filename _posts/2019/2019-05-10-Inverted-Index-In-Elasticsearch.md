@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Elasticsearch中的倒排索引"
-categories: [编程语言]
-tags: [Java,搜索引擎]
+categories: [搜索引擎]
+tags: [ElasticSearch]
 author_name: R_Lanffy
 published: true
 ---

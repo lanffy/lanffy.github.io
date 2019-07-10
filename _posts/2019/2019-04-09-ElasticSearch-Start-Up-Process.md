@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "搜索引擎ElasticSearch的启动过程"
-categories: [编程语言]
-tags: [Java,搜索引擎]
+categories: [搜索引擎]
+tags: [ElasticSearch]
 author_name: R_Lanffy
 ---
 ---
