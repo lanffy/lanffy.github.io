@@ -478,3 +478,14 @@ curl -XPOST 'http://localhost:9200/product/_analyze?pretty' -H 'Content-Type: ap
 ```
 
 [^analyze]: https://elasticsearch.cn/article/771
+
+
+## 系列文章
+
+1. [ElasticSearch系列一：源码编译和Debug环境搭建](https://lanffy.github.io/2019/04/08/Elasticsearch-Compile-Source-And-Debug)
+2. [ElasticSearch系列二：启动过程详解](https://lanffy.github.io/2019/04/09/ElasticSearch-Start-Up-Process)
+3. [Elasticsearch系列三：创建索引过程详解](https://lanffy.github.io/2019/04/16/How-Elasticsearch-Create-Index)
+4. [Elasticsearch系列四：搜索过程详解](https://lanffy.github.io/2019/04/30/ElasticSearch-Search-Process)
+5. [Elasticsearch系列五：搜索相关性排序算法详解](https://lanffy.github.io/2019/05/08/Elasticsearch-Search-Score-Algorithm)
+6. [Elasticsearch系列六：ES中的倒排索引](https://lanffy.github.io/2019/05/10/Inverted-Index-In-Elasticsearch)
+7. [Elasticsearch系列七：常见用法手册](https://lanffy.github.io/2019/07/10/Elasticsearch-Common-Usage-Manual)
