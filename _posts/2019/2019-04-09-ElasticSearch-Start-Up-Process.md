@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "搜索引擎ElasticSearch的启动过程"
+title: "ElasticSearch系列二：启动过程详解"
 categories: [搜索引擎]
 tags: [ElasticSearch]
 author_name: R_Lanffy

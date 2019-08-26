@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "搜索引擎ElasticSearch源码编译和Debug环境搭建"
+title: "ElasticSearch系列一：源码编译和Debug环境搭建"
 categories: [搜索引擎]
 tags: [ElasticSearch]
 author_name: R_Lanffy

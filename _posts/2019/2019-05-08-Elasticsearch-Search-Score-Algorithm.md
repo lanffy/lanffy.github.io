@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Elasticsearch搜索相关性排序算法详解"
+title: "Elasticsearch系列五：搜索相关性排序算法详解"
 categories: [搜索引擎]
 tags: [ElasticSearch]
 author_name: R_Lanffy

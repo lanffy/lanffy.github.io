@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Elasticsearch常见用法手册"
+title: "Elasticsearch系列七：常见用法手册"
 categories: [搜索引擎]
 tags: [ElasticSearch]
 author_name: R_Lanffy

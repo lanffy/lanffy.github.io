@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Elasticsearch中的倒排索引"
+title: "Elasticsearch系列六：ES中的倒排索引"
 categories: [搜索引擎]
 tags: [ElasticSearch]
 author_name: R_Lanffy

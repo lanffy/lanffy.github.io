@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Elasticsearch创建索引流程"
+title: "Elasticsearch系列三：创建索引过程详解"
 categories: [搜索引擎]
 tags: [ElasticSearch]
 author_name: R_Lanffy
