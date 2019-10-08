@@ -34,9 +34,10 @@
 <div class="header-container">
     <header class="inner">
         <nav>
-            <a class="{% if page.category == 'blog' %} selected {% endif %}" href="/articles">文章</a>
+            <a class="{% if page.category == 'articles' %} selected {% endif %}" href="/articles">文章</a>
             <a class="{% if page.category == 'categories' %} selected {% endif %}" href="/categories/">分类</a>
-            <a class="{% if page.category == 'about-zh' %} selected {% endif %}" href="/about/">关于</a>
+            <a class="{% if page.category == 'about' %} selected {% endif %}" href="/about/">关于</a>
+            <a target="_blank" href="{{ site.github_url }}">Github</a>
         </nav>
         <div class="pull-right right logo">
             <a href="{{ site.production_url }}/">
