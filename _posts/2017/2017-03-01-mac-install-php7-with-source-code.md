@@ -19,6 +19,8 @@ author_name: R_Lanffy
 
 #### 编译源码
 
+**注意：** 下面第4步中，有一些目录配置要根据自己系统的实际情况填写。
+
 1. 从压缩包解压，得到源码。复制到：``/usr/local/src/`` 目录
 2. 执行 ``cd /usr/local/src/php-7.x.x``
 3. 执行 ``./buildconf --force``
