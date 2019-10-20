@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PHP内核详解"
+title: "PHP内核详解-概括"
 categories: [编程语言]
 tags: [PHP]
 author_name: R_Lanffy
