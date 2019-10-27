@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用OpenNI2采集奥比中光AstraPro深度图RGB彩色图和点云数据"
+title: "OpenNI2采集奥比中光AstraPro深度图RGB彩色图和点云数据"
 categories: [编程语言]
 tags: [C++]
 author_name: R_Lanffy
