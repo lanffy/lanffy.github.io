@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "PHP内核详解-概括"
+title: "PHP内核详解-变量"
 categories: [编程语言]
 tags: [PHP]
 author_name: R_Lanffy
 ---
 ---
 
-# PHP内核详解-概括
+# PHP内核详解-变量
 
-本文章是PHP内核详解系列的第一篇：概括。
+本文章是PHP内核详解系列的第二篇：变量。
 
 该系列文章旨在介绍PHP内核，为PHP内核学习者做一个大概的介绍，主要是PHP的执行过程。 
 
