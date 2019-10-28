@@ -14,7 +14,7 @@ published: true
 
 1. 安装摄像头的驱动，下载地址：[https://orbbec3d.com/develop/#windows](https://orbbec3d.com/develop/#windows)，这里要注意的是要选择操作系统位数对应的版本，32为操作系统选择x86版本，64为系统选择x64版本，否则会出现不兼容问题
 2. 下载最新[OpenNI](https://github.com/OpenNI/OpenNI2/releases)
-3. 下载OpenCV2.4及以上版本：[https://opencv.org/releases/](https://opencv.org/releases/)，其中还用到了TBB，不想自己编译的话，可以用这个编译好的包：[https://me.csdn.net/download/rlanffy](https://me.csdn.net/download/rlanffy)
+3. 下载OpenCV2.4及以上版本：[https://opencv.org/releases/](https://opencv.org/releases/)，其中还用到了TBB，不想自己编译的话，可以用这个编译好的包：[https://download.csdn.net/download/rlanffy/11929225](https://download.csdn.net/download/rlanffy/11929225)
 4. 安装Visual Studio 2019
 
 ## 创建项目、系统配置 
