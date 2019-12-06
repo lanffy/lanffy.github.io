@@ -39,15 +39,15 @@ author_name: R_Lanffy
 
 PHP就属于解释型语言。
 
-### PHP简要生命周期
+### PHP执行过程
 
 PHP代码的简要执行过程，模块流程图：
 
 ![-w422](/images/posts/2019/15501319258173.jpg)
 
-一个PHP程序的大致流程图如下，如果没有使用opcache，流程图下面的opcache部分的流程可以忽略
+一个PHP程序的大致流程图如下[^1]
 
-![PHP程序的执行过程](/images/posts/2019/15506482368568.jpg)
+![PHP程序的执行过程](/images/posts/2019/15756544278291.jpg)
 
 其中：
 
@@ -61,7 +61,18 @@ PHP代码的简要执行过程，模块流程图：
 
 ![-w422](/images/posts/2019/15501346823825.jpg)
 
-### FASTCGI执行过程
+### PHP源码结构
+
+
+PHP源码结构如下[^1]
+
+
+![PHP源码结构](/images/posts/2019/15756549908692.jpg)
+
+
+这里简单说一下我们常用FASTCGI的工作流程
+
+#### FASTCGI执行过程
 
 介绍PHP-FPM在web请求过程中的执行流程。
 
@@ -79,60 +90,8 @@ PHP的FPM实现了FastCGI协议。一个完整的FPM响应一个请求的时序�
 
 PHP源码中，FASTCGI的实现：``main/fastcgi.c``
 
-后续介绍计划：
-
-## PHP变量及其类型
-
-变量存储结构： ``Zend/zend_types.h：_zval_struct``
-
-```c
-struct _zval_struct {
-	zend_value        value;			/* value */
-	union {
-		struct {
-			ZEND_ENDIAN_LOHI_3(
-				zend_uchar    type,			/* active type */
-				zend_uchar    type_flags,
-				union {
-					uint16_t  call_info;    /* call info for EX(This) */
-					uint16_t  extra;        /* not further specified */
-				} u)
-		} v;
-		uint32_t type_info;
-	} u1;
-	union {
-		uint32_t     next;                 /* hash collision chain */
-		uint32_t     cache_slot;           /* cache slot (for RECV_INIT) */
-		uint32_t     opline_num;           /* opline number (for FAST_CALL) */
-		uint32_t     lineno;               /* line number (for ast nodes) */
-		uint32_t     num_args;             /* arguments number for EX(This) */
-		uint32_t     fe_pos;               /* foreach position */
-		uint32_t     fe_iter_idx;          /* foreach iterator index */
-		uint32_t     access_flags;         /* class constant access flags */
-		uint32_t     property_guard;       /* single property guard */
-		uint32_t     constant_flags;       /* constant flags */
-		uint32_t     extra;                /* not further specified */
-	} u2;
-};
-```
-
-## PHP内存管理
-
-在说PHP内存管理之前，先了解一下操作系统是如何管理内存的。通常情况下，计算机中通过[内存管理单元(MMU)](http://zh.wikipedia.org/wiki/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83)来处理CPU对内存的访问。非系统的应用程序在有需要访问内存的时候，通过库函数malloc向操作系统申请内存。普通的应用发起内存访问，会涉及到CPU在用户态和内核态之间的转换，这个转换的成本很大。所以大多数的应用在启动的时候会向操作系统多申请一部分内存备用，我们常见的Java中的JVM和PHP中的Zend引擎就是这样做的。
-
-在PHP中，在全局配置文件``php.ini``中通过 ``memory_limit=32M`` 来设置启动内存。也可以通过下面的方式在运行时设置启动内存：
-
-```php
-<?php
-ini_set('memory_limit', '100M');
-```
-
-同时，PHP还提供了内存暂用情况的查看函数：
-
-1. [memory_get_usage()](http://www.php.net/manual/en/function.memory-get-usage.php)：获取 目前PHP脚本所用的内存大小
-2. [memory_get_peak_usage()](http://www.php.net/manual/en/function.memory-get-peak-usage.php)：当前脚本到目前为止所占用的内存峰值
-
-PHP内存管理器如下：
-![PHP内存管理器](/images/posts/2019/PHP_cache.jpeg)
-
 未完待续！
+
+阅读参考：
+
+[^1]: https://www.cnblogs.com/sunshineliulu/p/10990857.html
