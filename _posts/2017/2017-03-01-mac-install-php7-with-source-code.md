@@ -7,7 +7,9 @@ author_name: R_Lanffy
 ---
 ---
 
-## MAC OS X 编译安装PHP7.0.16
+[toc]
+
+## MAC OS X 编译安装PHP7
 
 主要内容包括:php7以上版本的编译,安装,php-fpm配置。
 
@@ -53,7 +55,7 @@ author_name: R_Lanffy
             --disable-phpdbg \
             --disable-phpdbg-webhelper \
             --enable-opcache \
-            --with-openssl=/usr/local/Cellar/openssl/1.0.2n \
+            --with-openssl=/usr/local/opt/openssl \
             --enable-simplexml \
             --with-sqlite3 \
             --enable-xmlreader \
@@ -61,97 +63,124 @@ author_name: R_Lanffy
             --enable-zip \
             --enable-sockets \
             --with-xmlrpc
+    
+    编译配置中，有很多依赖都是写死的路径，你可以根据你自己的路径进行配置。
+    
+5. 执行 ``make``，make过程中如果报错请参考后面的“编译常见报错解决”
+6. 执行 ``make install``
 
-编译配置中，有很多依赖都是写死的路径，你可以根据你自己的路径进行配置。
+#### 编译常见报错解决
 
+##### openssl、liconv等依赖包找不到问题
 
-5. 执行 ``make`` 进行编译,在编译过程中,遇到了这个报错:
+常见报错标志：
+* ld: symbol(s) not found for architecture x86_64
+* clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
-        Undefined symbols for architecture x86_64:
-          "_PKCS5_PBKDF2_HMAC", referenced from:
-              _zif_openssl_pbkdf2 in openssl.o
-          "_SSL_CTX_set_alpn_protos", referenced from:
-              _php_openssl_setup_crypto in xp_ssl.o
-          "_SSL_CTX_set_alpn_select_cb", referenced from:
-              _php_openssl_setup_crypto in xp_ssl.o
-          "_SSL_get0_alpn_selected", referenced from:
-              _php_openssl_sockop_set_option in xp_ssl.o
-          "_SSL_select_next_proto", referenced from:
-              _server_alpn_callback in xp_ssl.o
-          "_TLSv1_1_client_method", referenced from:
-              _php_openssl_setup_crypto in xp_ssl.o
-          "_TLSv1_1_server_method", referenced from:
-              _php_openssl_setup_crypto in xp_ssl.o
-          "_TLSv1_2_client_method", referenced from:
-              _php_openssl_setup_crypto in xp_ssl.o
-          "_TLSv1_2_server_method", referenced from:
-              _php_openssl_setup_crypto in xp_ssl.o
-        ld: symbol(s) not found for architecture x86_64
-        clang: error: linker command failed with exit code 1 (use -v to see invocation)
-        make: *** [sapi/cli/php] Error 1
+执行 ``make`` 进行编译,在编译过程中,遇到了这个报错:
+
+    Undefined symbols for architecture x86_64:
+      "_PKCS5_PBKDF2_HMAC", referenced from:
+          _zif_openssl_pbkdf2 in openssl.o
+      "_SSL_CTX_set_alpn_protos", referenced from:
+          _php_openssl_setup_crypto in xp_ssl.o
+      "_SSL_CTX_set_alpn_select_cb", referenced from:
+          _php_openssl_setup_crypto in xp_ssl.o
+      "_SSL_get0_alpn_selected", referenced from:
+          _php_openssl_sockop_set_option in xp_ssl.o
+      "_SSL_select_next_proto", referenced from:
+          _server_alpn_callback in xp_ssl.o
+      "_TLSv1_1_client_method", referenced from:
+          _php_openssl_setup_crypto in xp_ssl.o
+      "_TLSv1_1_server_method", referenced from:
+          _php_openssl_setup_crypto in xp_ssl.o
+      "_TLSv1_2_client_method", referenced from:
+          _php_openssl_setup_crypto in xp_ssl.o
+      "_TLSv1_2_server_method", referenced from:
+          _php_openssl_setup_crypto in xp_ssl.o
+    ld: symbol(s) not found for architecture x86_64
+    clang: error: linker command failed with exit code 1 (use -v to see invocation)
+    make: *** [sapi/cli/php] Error 1
 
 一般报``Undefined symbols for architecture x86_64``这种错误就是找不到编译依赖软件包，这个时候就要手动指明依赖包的路径，如上，是openssl这个依赖找不到，手动指定路径配置如下修改：
 
-    **解决办法**
+解决办法:
 
-    MakeFile 里面找到有 **EXTRA_LIBS** 的一行,删除值中所有的 -lssl 和 -lcrypto,然后在该行的末尾添加 libssl.dylib 和 libcrypto.dylib 的路径: ``/usr/local/opt/openssl/lib/libssl.dylib`` 、 ``/usr/local/opt/openssl/lib/libcrypto.dylib``
+**MakeFile** 里面找到有 **EXTRA_LIBS** 的一行,删除值中所有的 ``-lssl`` 和 ``-lcrypto``,然后在该行的末尾添加 ``libssl.dylib`` 和 ``libcrypto.dylib`` 的路径: ``/usr/local/opt/openssl/lib/libssl.dylib`` 、 ``/usr/local/opt/openssl/lib/libcrypto.dylib``
 
-    更改后的内容为:
+更改后的内容为:
 
-        EXTRA_LIBS = -lz -lresolv -lmcrypt -lstdc++ -liconv -liconv -lpng -lz -ljpeg -lcurl -lbz2 -lm -lxml2 -lz -licucore -lm -lz -lcurl -lxml2 -lz -licucore -l     m -lfreetype -licui18n -licuuc -licudata -licuio -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lz      /usr/local/opt/openssl/lib/libssl.dylib /usr/local/opt/openssl/lib/libcrypto.dylib
-
-    继续执行make命令
+>EXTRA_LIBS = -lz -lresolv -lmcrypt -lstdc++ -liconv -liconv -lpng -lz -ljpeg -lcurl -lbz2 -lm -lxml2 -lz -licucore -lm -lz -lcurl -lxml2 -lz -licucore -l     m -lfreetype -licui18n -licuuc -licudata -licuio -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lz /usr/local/opt/openssl/lib/libssl.dylib /usr/local/opt/openssl/lib/libcrypto.dylib
 
 有一次我升级了liconv，make的时候，报错找不到依赖，所以把上面的值中所有的``-liconv``删除，在后面加上本地的liconv的路径，配置如下：
 
-        EXTRA_LIBS = -lz -lresolv -lmcrypt -lstdc++ -lpng -lz -ljpeg -lcurl -lbz2 -lm -lxml2 -lz -licucore -lm -lz -lcurl -lxml2 -lz -licucore -l     m -lfreetype -licui18n -licuuc -licudata -licuio -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lz      /usr/local/opt/openssl/lib/libssl.dylib /usr/local/opt/openssl/lib/libcrypto.dylib /usr/local/opt/libiconv/lib/libiconv.dylib
+>EXTRA_LIBS = -lz -lresolv -lmcrypt -lstdc++ -lpng -lz -ljpeg -lcurl -lbz2 -lm -lxml2 -lz -licucore -lm -lz -lcurl -lxml2 -lz -licucore -l     m -lfreetype -licui18n -licuuc -licudata -licuio -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lxml2 -lz -licucore -lm -lz      /usr/local/opt/openssl/lib/libssl.dylib /usr/local/opt/openssl/lib/libcrypto.dylib /usr/local/opt/libiconv/lib/libiconv.dylib
 
-6. make命令执行完成没有报错后,执行 ``make install``
+修改Makefile文件后，需要执行make clean，修改的内容才会生效
 
-到这里就编译完成并安装了php7了
+##### C++版本不对问题
 
+**常见报错信息：**
 
+* delegating constructors are permitted only in C++11
 
-#### 配置
+**解决办法：**
 
+打开``Makefile``，搜索 ``CXXFLAGS = -g -O2`` 行并添加 -std = c++11
 
-1. 配置FPM和ini
-	* ``sudo mkdir -pv /usr/local/php/php7/etc/conf.d``
-	* ``sudo cp -v ./php.ini-production /usr/local/php/php7/lib/php.ini``
-	* ``sudo cp -v ./sapi/fpm/www.conf /usr/local/php/php7/etc/php-fpm.d/www.conf``
-	* ``sudo cp -v ./sapi/fpm/php-fpm.conf /usr/local/php/php7/etc``
-	* ``sudo ln -s /usr/local/php/php7/sbin/php-fpm /usr/sbin/php-fpm`` 如果已经存在,要先删除原来的php-fpm
-	* ``sudo vim /usr/local/php/php7/etc/php-fpm.conf`` 去掉 ``pid = run/php-fpm.pid``前面的注释
+```c
+CXX = g++
+CXXFLAGS = -g -O2 -std=c++11 ...(后面如果有其他内容不要修改或者删除)
+CXXFLAGS_CLEAN = $(CXXFLAGS)
+```
 
-2. 配置OPcache
-``sudo vim /usr/local/php/php7/etc/conf.d/modules.ini``
+修改Makefile文件后，需要执行make clean，修改的内容才会生效
 
-	输入以下内容后保存:
-	```
-	# Zend OPcache
-	zend_extension=opcache.so
-	```
+### 配置
 
-3. 配置php命令
+#### 配置FPM和ini
 
-    执行``where php`` 查看当前环境中的php在哪些路径,替换掉路径中的``phar`` 、``phar.phar`` 、 ``php`` 、 ``php-cgi`` 、 ``php-config`` 、``phpize``。通过以下步骤来完成
+```bash
+sudo mkdir -pv /usr/local/php/php7/etc/conf.d
+sudo cp -v ./php.ini-production /usr/local/php/php7/lib/php.ini
+sudo cp -v ./sapi/fpm/www.conf /usr/local/php/php7/etc/php-fpm.d/www.conf
+sudo cp -v ./sapi/fpm/php-fpm.conf /usr/local/php/php7/etc
+sudo ln -s /usr/local/php/php7/sbin/php-fpm /usr/sbin/php-fpm ;如果已经存在,要先删除原来的php-fpm
+sudo vim /usr/local/php/php7/etc/php-fpm.conf ;去掉pid = run/php-fpm.pid前面的注释
+```
 
-    * 先删掉路径下的``phar`` 、``phar.phar`` 、 ``php`` 、 ``php-cgi`` 、 ``php-config`` 、``phpize``,如果不放心,也可以先mv替换名字
-    * 执行以下命令
+#### 配置OPcache
 
-            sudo ln -s /usr/local/php/php7/bin/phar /usr/local/bin/phar
-            sudo ln -s /usr/local/php/php7/bin/phar.phar /usr/local/bin/phar.phar
-            sudo ln -s /usr/local/php/php7/bin/php /usr/local/bin/php
-            sudo ln -s /usr/local/php/php7/bin/php-cgi /usr/local/bin/php-cgi
-            sudo ln -s /usr/local/php/php7/bin/php-config /usr/local/bin/php-config
-            sudo ln -s /usr/local/php/php7/bin/phpize /usr/local/bin/phpize
+```bash
+sudo vim /usr/local/php/php7/etc/conf.d/modules.ini
+```
 
-4. 完成上诉步骤后,执行: ``php -v``,校验版本
+输入以下内容后保存:
 
+```
+# Zend OPcache
+zend_extension=opcache.so
+```
 
+#### 配置php命令
+
+执行``where php`` 查看当前环境中的php在哪些路径,替换掉路径中的``phar`` 、``phar.phar`` 、 ``php`` 、 ``php-cgi`` 、 ``php-config`` 、``phpize``。通过以下步骤来完成
+
+* 先删掉路径下的``phar`` 、``phar.phar`` 、 ``php`` 、 ``php-cgi`` 、 ``php-config`` 、``phpize``,如果不放心,也可以先mv替换名字
+* 执行以下命令
+
+```bash
+sudo ln -s /usr/local/php/php7/bin/phar /usr/local/bin/phar
+sudo ln -s /usr/local/php/php7/bin/phar.phar /usr/local/bin/phar.phar
+sudo ln -s /usr/local/php/php7/bin/php /usr/local/bin/php
+sudo ln -s /usr/local/php/php7/bin/php-cgi /usr/local/bin/php-cgi
+sudo ln -s /usr/local/php/php7/bin/php-config /usr/local/bin/php-config
+sudo ln -s /usr/local/php/php7/bin/phpize /usr/local/bin/phpize
+```
+
+完成上诉步骤后,执行: ``php -v``,校验版本
 
 #### 启动、停止、重启php-pfm
-
 
 1. 启动: ``php-fpm --fpm-config /usr/local/php/php7/etc/php-fpm.conf``
 2. 停止: ``kill -INT `cat /usr/local/php/php7/var/run/php-fpm.pid``
