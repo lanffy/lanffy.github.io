@@ -27,6 +27,8 @@ MQTT用于收发消息的主要组件有：
 >    1. MQTT和AQMP有哪些差异？
 >    2. MQTT和HTTP又有哪些差异？
 
+可以带着问题，看看专题文章：[MQTT Essentials](https://www.hivemq.com/mqtt-essentials/)
+
 ## 在Windows中编译安装MQTT C++客户端
 
 本章主要介绍在Windwos平台下编译安装MQTT的C++库，只介绍编译安装过程，开发教程有时间再另开文章介绍
