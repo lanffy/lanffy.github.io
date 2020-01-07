@@ -21,11 +21,18 @@ MQTT用于收发消息的主要组件有：
 三者的关系如下图：
 ![](/images/posts/2020/1/15782955889503.jpg)
 
-和AQMP一样，MQTT也是基于TCP/IP协议进行通信的。
+从图中可以看出，如果把发送消息或接收消息的端成为Client，那么一个Client即可以是发布者（Publisher）也可以是订阅者（Subscriber）。因为一个client可以通过实现publish接口发送消息，也可以用过实现subscribe接口订阅消息。
+
+代理（Broker）是链接发布者（Publisher）和订阅者（Subscriber）的中心。一个代理可以链接上千个Client。代理的职责是接收所有发布者（Publisher）的消息，判断消息应该发往哪个订阅者（Subscriber）
+
+和AQMP一样，MQTT也是基于TCP/IP协议进行通信的。如下图：
+![](/images/posts/2020/1/15783670947970.jpg)
+
 
 > 思考点：
 >    1. MQTT和AQMP有哪些差异？
 >    2. MQTT和HTTP又有哪些差异？
+>    3. 代理是通过什么方式判断把发布者（Publisher）的消息分发到对应的订阅者（Subscriber）？
 
 可以带着问题，看看专题文章：[MQTT Essentials](https://www.hivemq.com/mqtt-essentials/)
 
