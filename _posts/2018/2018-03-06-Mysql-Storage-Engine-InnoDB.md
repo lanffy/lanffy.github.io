@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mysql存储引擎-InnoDB"
+title: "Mysql存储引擎-InnoDB详解"
 categories: [数据存储]
 tags: [Mysql]
 author_name: R_Lanffy
