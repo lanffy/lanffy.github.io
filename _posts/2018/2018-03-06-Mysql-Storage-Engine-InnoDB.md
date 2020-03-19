@@ -169,8 +169,8 @@ InnoDB存储引擎开创性地设计了Insert Buffer，对于非聚集索引的�
 
 然而Insert Buffer的使用需要同时满足以下两个条件：
 
-* 索引是辅助索引（secondary index）；
-* 索引不是唯一（unique）的。”
+* 索引是辅助索引（secondary index）
+* 索引不是唯一（unique）的
 
 辅助索引不能是唯一的，因为在插入缓冲时，数据库并不去查找索引页来判断插入的记录的唯一性。如果去查找肯定又会有离散读取的情况发生，从而导致Insert Buffer失去了意义。
 
