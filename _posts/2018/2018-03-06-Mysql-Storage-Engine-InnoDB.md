@@ -81,48 +81,48 @@ InnoDB使用聚集索引，因此其中的数据按照主键的顺序存放。�
 
 该线程宏观上来看只有两个动作：每秒的操作和每十秒的操作。其内部的伪代码如下：
 
-```
+```cs
 void master_thread(){
-goto loop;
-loop：
-for(int i=0;i＜10;i++){
-thread_sleep(1)//sleep 1 second
-do log buffer flush to disk
-if(last_one_second_ios＜5%innodb_io_capacity)
-do merge 5%innodb_io_capacity insert buffer
-if(buf_get_modified_ratio_pct＞innodb_max_dirty_pages_pct)
-do buffer pool flush 100%innodb_io_capacity dirty page
-else if enable adaptive flush
-do buffer pool flush desired amount dirty page
-if(no user activity)
-goto backgroud loop
-}
-if(last_ten_second_ios＜innodb_io_capacity)
-do buffer pool flush 100%innodb_io_capacity dirty page
-do merge 5%innodb_io_capacity insert buffer
-do log buffer flush to disk
-do full purge
-if(buf_get_modified_ratio_pct＞70%)
-do buffer pool flush 100%innodb_io_capacity dirty page
-else
-dobuffer pool flush 10%innodb_io_capacity dirty page
-goto loop
-background loop:
-do full purge
-do merge 100%innodb_io_capacity insert buffer
-if not idle:
-goto loop:
-else:
-goto flush loop
-flush loop:
-do buffer pool flush 100%innodb_io_capacity dirty page
-if(buf_get_modified_ratio_pct＞innodb_max_dirty_pages_pct)
-go to flush loop
-goto suspend loop
-suspend loop:
-suspend_thread()
-waiting event
-goto loop;
+    goto loop;
+    loop：
+    for(int i=0;i＜10;i++){
+        thread_sleep(1)//sleep 1 second
+        do log buffer flush to disk
+        if(last_one_second_ios＜5%innodb_io_capacity)
+            do merge 5%innodb_io_capacity insert buffer
+        if(buf_get_modified_ratio_pct＞innodb_max_dirty_pages_pct)
+            do buffer pool flush 100%innodb_io_capacity dirty page
+        else if enable adaptive flush
+            do buffer pool flush desired amount dirty page
+        if(no user activity)
+        goto backgroud loop
+    }
+    if(last_ten_second_ios＜innodb_io_capacity)
+        do buffer pool flush 100%innodb_io_capacity dirty page
+        do merge 5%innodb_io_capacity insert buffer
+        do log buffer flush to disk
+        do full purge
+    if(buf_get_modified_ratio_pct＞70%)
+        do buffer pool flush 100%innodb_io_capacity dirty page
+    else
+        dobuffer pool flush 10%innodb_io_capacity dirty page
+        goto loop
+    background loop:
+    do full purge
+    do merge 100%innodb_io_capacity insert buffer
+    if not idle:
+        goto loop:
+    else:
+        goto flush loop
+    flush loop:
+    do buffer pool flush 100%innodb_io_capacity dirty page
+    if(buf_get_modified_ratio_pct＞innodb_max_dirty_pages_pct)
+        go to flush loop
+        goto suspend loop
+    suspend loop:
+    suspend_thread()
+    waiting event
+    goto loop;
 }
 ```
 
