@@ -303,6 +303,30 @@ curl -X GET 'localhost:9200/product/_search?pretty' -H 'Content-Type: applicatio
 }'
 ```
 
+#### 3.2.5、查询有安全认证的ES
+当ES设置了用户名和密码时，通过命令行查询需要带上用户名和密码，命令如下：
+
+```json
+curl --user elastic:123456 -X GET http://localhost:9200/product/_doc/1?pretty
+{
+  "_index" : "noah",
+  "_type" : "_doc",
+  "_id" : "1",
+  "_version" : 1,
+  "_seq_no" : 1,
+  "_primary_term" : 1,
+  "found" : true,
+  "_source" : {
+    "name" : "王义凯",
+    "age" : 28,
+    "email" : "wangyikai@csdn.com",
+    "company" : "CSDN"
+  }
+```
+
+其中，--user传的时用户名(elastic)和密码(123456)
+
+
 ### 3.3、更新数据命令
 
 ElasticSearch中更新数据命令：
