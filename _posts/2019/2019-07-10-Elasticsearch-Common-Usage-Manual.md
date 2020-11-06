@@ -175,6 +175,14 @@ ElasticSearch 删除某个索引命令。
 
 下面提到的数据即索引中的文档。
 
+Tips：如果安装ES的时候设置了用户名和密码，在查询的时候通过下面的方式带上用户名和密码：
+
+```json
+curl -X GET --user username:password '127.0.0.1:9200/index/_search?ignore_unavailable=true&pretty' -H 'Content-Type: application/json' -d '{}
+```
+
+* ignore_unavailable=true : 忽略索引不存在的报错
+
 ### 3.1、写入数据命令
 
 ElasticSearch写入数据命令.
@@ -355,6 +363,104 @@ ElasticSearch中删除文档数据命令：
 #### 3.4.2、7.0及其之后的版本
 
 ``curl -XDELETE 'http://localhost:9200/indexName/_doc/1'``
+
+### 3.5、聚合查询、聚合搜索
+
+按照host聚合
+
+```json
+curl -X GET '127.0.0.1:9200/index/_search?ignore_unavailable=true&pretty' -H 'Content-Type: application/json' -d '{
+    "query": {
+        "match": {
+            "field": "test"
+        }
+    },
+    "size":0,
+    "aggs": {
+        "Hosts": {
+            "terms": {
+                "field": "host",
+                "size":10000
+            }
+        }
+    }
+}'
+```
+
+在指定的时间段内统计聚合，下面的查询，统计指定时间段内，每3600秒按照host字段聚合
+
+```json
+curl -X GET '127.0.0.1:9200/index/_search?ignore_unavailable=true&pretty' -H 'Content-Type: application/json' -d '{
+    "query": {
+        "match": {
+            "field": "test"
+        }
+    },
+    "size":0,
+    "aggs": {
+        "Monitor": {
+          "date_histogram": {
+            "field": "requestTime",
+            "interval": "3600s",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "min_doc_count": 0,
+            "extended_bounds" : {
+                "min" : "2020-11-04 00:00:00",
+                "max" : "2020-11-05 00:00:00"
+            }
+          },
+          "aggs":{
+            "host": {
+                "terms": {
+                    "field": "host",
+                    "size":10000
+                }
+            }
+          }
+        }
+    }
+}'
+```
+
+聚合后去重，下面的查询，每3600秒按照host聚合统计pv，然后在结果里面按照username去重，统计uv
+
+```json
+curl -X GET '127.0.0.1:9200/index/_search?ignore_unavailable=true&pretty' -H 'Content-Type: application/json' -d '{
+    "query": {
+        "match": {
+            "field": "test"
+        }
+    },
+    "size":0,
+    "aggs": {
+        "Monitor": {
+          "date_histogram": {
+            "field": "requestTime",
+            "interval": "3600s",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "min_doc_count": 0,
+            "extended_bounds" : {
+                "min" : "2020-11-04 00:00:00",
+                "max" : "2020-11-05 00:00:00"
+            }
+          },
+          "aggs":{
+            "host": {
+                "terms": {
+                    "field": "host",
+                    "size":10000
+                },
+                "aggs":{"uv": {
+                    "cardinality": {
+                        "field": "username"
+                    }
+                }}
+            }
+          }
+        }
+    }
+}'
+```
 
 ### 4、ElasticSearch中分词器分析器在命令行中的用法
 
