@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ansible部署原理"
+title: "Ansible入门介绍"
 categories: [开发工具]
 tags: [ansible]
 author_name: R_Lanffy
